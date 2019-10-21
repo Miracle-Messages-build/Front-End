@@ -1,25 +1,21 @@
 import React, {useState} from "react";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 import axios from 'axios'
 
-const SignUp = (props) => {
+const Login = (props) => {
+ 
 
-    // {
-    //     "password": "string",
-    //     "primaryemail": "string",
-    //     "username": "string"
-    //   }
+  const credentials = {
+    username:'',
+    primaryemail:'',
+    password:''
+}
 
-    const credentials = {
-        username:'',
-        primaryemail:'',
-        password:''
-    }
-
-const [signUp, setSignUp] = useState(credentials)
+const [newLogin, setNewLogin]= useState(credentials)
 
 const handleChange = event => {
-  setSignUp ({
-    ...signUp,
+  setNewLogin({
+    ...newLogin,
     [event.target.name]:event.target.value
   });
 
@@ -29,10 +25,10 @@ const handleLogin = event => {
   event.preventDefault();
 
  axios
-      .post('', signUp)
+      .post('', newLogin)
        .then(response => {
           localStorage.setItem('token', response.data.payload);
-          props.history.push('/')
+          props.history.push('/protected')
       })
       .catch(err => console.log(err.response));
 
@@ -46,16 +42,16 @@ const handleLogin = event => {
                     <input
                         type="text"
                         name="username"
-                        value={signUp.username}
+                        value={newLogin.username}
                         onChange={handleChange}
                     />
                     <input
                         type="password"
                         name="password"
-                        value={signUp.password}
+                        value={newLogin.password}
                         onChange={handleChange}
                     />
-                      <input
+                          <input
                         type="text"
                         name="primaryemail"
                         value={signUp.primaryemail}
@@ -69,4 +65,4 @@ const handleLogin = event => {
   );
 };
 
-export default SignUp;
+export default Login;
