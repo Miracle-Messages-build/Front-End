@@ -71,7 +71,7 @@ const UpdateForm = props => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form  className="login-form" onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="name"

@@ -20,3 +20,40 @@
 .App-link {
   color: #09d3ac;
 }
+
+.login-form {
+  margin: 5% auto;
+    width: 15rem;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background:#e5e5e5;
+    box-shadow: 5px 1px 20px #111;
+    display:flex;
+    flex-direction: column;
+    padding: 5rem;
+    align-items: center;
+ 
+  }
+
+  .signup-form {
+    margin: 5% auto;
+    width: 15rem;
+    border: 2px solid grey;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background:#e5e5e5;
+    box-shadow: 5px 1px 20px #111;
+    display:flex;
+    flex-direction: column;
+    padding: 5rem;
+    align-items: center;
+  
+    
+    }
+
+    .signup-input{
+      border:1px solid red;
+      width:50%;
+      height: 25%;
+    }

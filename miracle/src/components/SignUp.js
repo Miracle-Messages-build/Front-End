@@ -42,26 +42,29 @@ const handleLogin = event => {
 
   return (
     <>
-          <form onSubmit={handleLogin}>
-                    <input
+          <form className="signup-form" onSubmit={handleLogin}>
+                    <input 
                         type="text"
                         name="username"
                         value={signUp.username}
                         onChange={handleChange}
+                        placeholder="Username"
                     />
                     <input
                         type="password"
                         name="password"
                         value={signUp.password}
                         onChange={handleChange}
+                        placeholder="Password"
                     />
                       <input
                         type="text"
                         name="primaryemail"
                         value={signUp.primaryemail}
                         onChange={handleChange}
+                        placeholder="Primary Email"
                     />
-                    <button>Log in</button>
+                    <button>Sign up</button>
 
 
                 </form>
