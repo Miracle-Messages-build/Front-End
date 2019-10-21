@@ -87,6 +87,7 @@ const VolunteerCase = props => {
           <li>Last Known Location: {props.lastKnownLoc}</li>
         </ul>
         <p>{props.extraDetails}</p>
+        {props.isResolved ? <h2>Case Resolved!</h2> : null}
       </CaseBody>
       <CaseButtons>
         <button onClick={() => alert(`Edit case ${props.id}`)}>Edit Case</button>
