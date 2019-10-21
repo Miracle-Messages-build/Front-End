@@ -24,7 +24,7 @@ const handleChange = event => {
 const handleLogin = event => {
   event.preventDefault();
 
- axios
+ axiosWithAuth()
       .post('', newLogin)
        .then(response => {
           localStorage.setItem('token', response.data.payload);
