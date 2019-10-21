@@ -33,6 +33,7 @@ const Form = styled.form`
     margin: 3% auto;
     box-sizing: border-box;
   }
+  
   button {
     width: 100%;
     height: 30px;
@@ -68,7 +69,7 @@ const AddCase = () => {
           Age
           <input type="number" name="age" id="age" value={inputs.age} onChange={handleChange} min="16" max="100" placeholder="Age" required />
         </label>
-        <label htmlFor="city">
+        <label htmlFor="location">
           Last Known Location
           <input type="text" name="location" id="location" value={inputs.location} onChange={handleChange} placeholder="City, State" required />
         </label>
@@ -82,4 +83,4 @@ const AddCase = () => {
   )
 }
 
-export default AddCase
+export default AddCase;
