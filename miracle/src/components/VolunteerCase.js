@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 /*
@@ -17,11 +17,10 @@ Contact (phone # or address)
 */
 
 const CaseContainer = styled.div`
-margin-top: 10%;
+  margin: 2%;
+  margin-top: 10%;
   width: 15%;
-  /* border: 1px solid black; */
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
-  /* padding-bottom: 1%; */
   ul {
     list-style-type: none;
     padding: 0;
@@ -45,37 +44,32 @@ const CaseHeader = styled.h1`
   margin: 0;
   padding: 0;
   background-color: dodgerblue;
-`
+`;
 
 const CaseBody = styled.div`
   padding: 3%;
-`
+`;
 
 const CaseButtons = styled.div`
   display: flex;
   justify-content: center;
-  /* width: 100%; */
 
   button {
     width: 48%;
     height: 30px;
     margin: 1%;
-    /* color: whitesmoke;
-    border: none;
-    background-color: dodgerblue;
-    margin: .5%; */
   }
-`
+`;
 
 const VolunteerCase = props => {
   return (
     <CaseContainer>
       <CaseHeader>
-        {props.name}
+        {props.isResolved ? 'CLOSED CASE' : 'OPEN CASE'}
       </CaseHeader>
       <CaseBody>
         <ul>
-          <li>Age: {props.age}</li>
+          <li>{props.name}, Age: {props.age}</li>
           <li>Home Town: {props.homeTown}</li>
           <li>Current City: {props.currentCity}</li>
           <li>Contact: {props.contact}</li>
@@ -87,7 +81,6 @@ const VolunteerCase = props => {
           <li>Last Known Location: {props.lastKnownLoc}</li>
         </ul>
         <p>{props.extraDetails}</p>
-        {props.isResolved ? <h2>Case Resolved!</h2> : null}
       </CaseBody>
       <CaseButtons>
         <button onClick={() => alert(`Edit case ${props.id}`)}>Edit Case</button>
