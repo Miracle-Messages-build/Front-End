@@ -15,10 +15,10 @@ export const fetchCase = () => {
         dispatch({ type: START_FETCHING });
 
         axios
-            .get('')
+            .get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
             // .then(response => console.log (response, "From API"))
             .then(response => dispatch({ type: FETCH_SUCCESS, payload: response.data }))
-            .catch(error => dispatch({ type: FETCH_FAILURE, payload: error.response }))
+            // .catch(error => dispatch({ type: FETCH_FAILURE, payload: error.response }))
 
     };
 };
@@ -29,24 +29,24 @@ export const addCase = (item) => {
         dispatch({ type: POST_START });
 
         axios
-            .post('', item)
-            // .then(response => console.log (response, "From API POST"))
-            .then(response => dispatch({ type: POST_SUCCESS, payload: response.data }))
-            .catch(error => dispatch({ type: POST_FAILURE, payload: error.response }))
+            .post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', item)
+            .then(response => console.log (response, "From API POST"))
+            // .then(response => dispatch({ type: POST_SUCCESS, payload: response.data }))
+            // .catch(error => dispatch({ type: POST_FAILURE, payload: error.response }))
 
     };
 };
 
 
-export const deleteSmurf = (id) => {
+export const deleteCase = (id) => {
     return dispatch => {
         dispatch({ type: DELETE_START });
 
         axios
-            .delete(``)
+            .delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases${id}`)
             // .then(response => console.log (response, "DEL"))
             .then(response => dispatch({ type: DELETE_SUCCESS, payload: response.data }))
-            // .catch(error => dispatch({ type: DELETE_FAILURE, payload: error.response }))
+        // .catch(error => dispatch({ type: DELETE_FAILURE, payload: error.response }))
 
     };
 };

@@ -62,7 +62,9 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
+  console.log(props)
   return (
+    
     <CaseContainer>
       <CaseHeader>
         {props.isResolved ? 'CLOSED CASE' : 'OPEN CASE'}

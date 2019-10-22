@@ -8,10 +8,10 @@ const initialCase = {
     hometown: '',
     current_city: '',
     current_state: '',
-    contact:''
+    contact: ''
 }
 
- 
+
 
 //Make API call in app.js, pass down here as props
 // const [caseInfo, setCaseInfo] = useState([]);
@@ -71,7 +71,7 @@ const UpdateForm = props => {
     }
 
     return (
-        <form  className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="name"
@@ -100,7 +100,7 @@ const UpdateForm = props => {
                 placeholder="Current State"
                 value={info.current_state}
             />
-               <input
+            <input
                 type="text"
                 name="contact"
                 onChange={changeHandler}
