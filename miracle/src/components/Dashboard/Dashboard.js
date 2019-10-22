@@ -18,20 +18,19 @@ const CaseContainer = styled.div`
   justify-content: center;
 `;
 
-const Dashboard = () => {
+const Dashboard = props => {
   return (
     <div>
       <DashHeader>
         <h1>Dashboard</h1>
         <nav>
           <Link to="/dashboard"><button>Dashboard</button></Link>
-          <Link to="/dashboard/viewcases"><button>View Cases</button></Link>
           <Link to="/dashboard/viewallcases"><button>View All Cases</button></Link>
           <Link to="/dashboard/addcase"><button>Add Case</button></Link>
         </nav>
       </DashHeader>
       <CaseContainer>
-        <Route path="/dashboard/viewcases" component={ViewCases} />
+        {props.location.pathname === "/dashboard" ? <ViewCases viewAllCases /> : null}
         <Route path="/dashboard/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} />
         <Route path="/dashboard/addcase" component={VolunteerAddCase} />
       </CaseContainer>

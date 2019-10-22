@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
-  margin-top: 5%; /* NOT FOR PRODUCTION */
+  margin-top: 2%; 
   width: 50%;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
 `
