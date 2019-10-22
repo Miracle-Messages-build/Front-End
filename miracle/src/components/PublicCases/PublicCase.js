@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-/*
-Case should have:
-  Name 
-  Age
-  Last known city
-*/
-
 const CaseContainer = styled.div`
   margin: 2%;
   margin-top: 10%;
@@ -37,7 +30,7 @@ const CaseHeader = styled.h1`
   margin: 0;
   padding: 0;
   background-color: dodgerblue;
-`
+`;
 
 const CaseBody = styled.div`  
   display: flex;
@@ -45,9 +38,9 @@ const CaseBody = styled.div`
   height: 60%;
   align-items: center;
   padding: 3%;
-`
+`;
 
-const Case = props => {
+const PublicCase = props => {
   return (
     <CaseContainer>
       <CaseHeader>
@@ -61,7 +54,7 @@ const Case = props => {
         </ul>
       </CaseBody>
     </CaseContainer>
-  )
+  );
 }
 
-export default Case;
+export default PublicCase;
