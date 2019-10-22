@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "miracle",
+    "builds": [{ "src": "miracle/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": "moracle/$1" }
+    ]
+}
