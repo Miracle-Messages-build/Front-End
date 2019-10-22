@@ -18,7 +18,7 @@ Contact (phone # or address)
 
 const CaseContainer = styled.div`
   margin: 2%;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   width: 15%;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
   ul {
@@ -84,7 +84,7 @@ const VolunteerCase = props => {
       </CaseBody>
       <CaseButtons>
         <button onClick={() => alert(`Edit case ${props.id}`)}>Edit Case</button>
-        <button onClick={() => alert(`Delete case ${props.id}`)}>Delete Case</button>
+        <button onClick={() => props.deleteCase(props.id)}>Delete Case</button>
       </CaseButtons>
     </CaseContainer>
   )
