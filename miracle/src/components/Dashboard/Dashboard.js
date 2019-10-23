@@ -32,9 +32,10 @@ const Dashboard = props => {
           <Link to="/dashboard/addcase"><button>Add Case</button></Link>
           <Link to="/login"><button>Login</button></Link>
           <Link to="/signup"><button>Signup</button></Link>
+
           
           {/* <Link to="/volunteer/case"><button>Vounteercase</button></Link> */}
-          {/* <Link to="/volunteer/cases"><button>Vounteer cases</button></Link> */}
+          <Link to="/volunteer/cases"><button>Volunteer cases</button></Link>
 
 
 

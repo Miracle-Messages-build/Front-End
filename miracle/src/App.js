@@ -12,13 +12,14 @@ import PrivateRoute from './components/PrivateRoute.js'
 import VolunteerCase from './components/Dashboard/VolunteerCase.js'
 import VolunteerCases from './components/TestForRedux.js'
 import AddCase from './components/PublicCases/AddPublicCase.js'
+import ViewCases from './components/Dashboard/ViewCases.js'
 function App() {
   const [caseInfo, setCaseInfo] = useState([])
 
   useEffect(() => {
     axios
       .get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
-      .then(response => setCaseInfo(response.data))
+      .then(response => console.log(response.data))
 
   }, [])
 
@@ -27,10 +28,11 @@ function App() {
       <Router>
         <h1>Miracle messages</h1>
         <Dashboard />
+        <ViewCases/>
         {/* <UpdateForm/> */}
         {/* <AddCase/> */}
       {/* <VolunteerCase/> */}
-      <VolunteerCases  caseInfo={caseInfo} setCaseInfo={setCaseInfo}/>
+      {/* <VolunteerCases  caseInfo={caseInfo} setCaseInfo={setCaseInfo}/> */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/volunteercase" component={VolunteerCase} />

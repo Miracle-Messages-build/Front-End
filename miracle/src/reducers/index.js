@@ -17,7 +17,7 @@ const initialState = {
 
 
 const reducer = (state = initialState, action) => {
-    console.log(state, "in red")
+    // console.log(state, "in red")
     switch (action.type) {
         case START_FETCHING:
             return {

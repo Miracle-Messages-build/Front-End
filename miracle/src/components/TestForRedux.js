@@ -6,7 +6,7 @@ import VolunteerCase from './Dashboard/VolunteerCase.js'
 
 
 const VolunteerCases = (props) => {
-    console.log(props, "p")
+    // console.log(props, "p")
     useEffect(() => {
         props.fetchCase();
     }, [])
@@ -18,7 +18,7 @@ const VolunteerCases = (props) => {
     return (
 
         <div>
-            <h1>hello t</h1>
+          
             {/* {props.error && <p>{props.error}</p>} */}
 
 

@@ -63,11 +63,9 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
-  console.log(props,"inside")
+  // console.log(props,"inside")
 
-  // const editLink =()=>{
-  //   props.history.push('/login')
-  // }
+
   return (
     
     <CaseContainer>
@@ -75,7 +73,7 @@ const VolunteerCase = props => {
         {props.isResolved ? 'CLOSED CASE' : 'OPEN CASE'}
       </CaseHeader>
       <CaseBody>
-        <h1>hi</h1>
+       
         <ul>
           <li>{props.cases.socialCaseFname}, Age: {props.cases.socialCaseAge}</li>
           <li>Home Town: {props.cases.socialCaseHometown}</li>
