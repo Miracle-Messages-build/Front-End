@@ -3,25 +3,25 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
-  margin-top: 5%; /* NOT FOR PRODUCTION */
+  margin-top: 5%;
   width: 20%;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
-`
+`;
+
 const FormHeader = styled.h1`
-  font-size: 1.8rem;
-  padding: 2%;
-  margin: 0;
+  font-size: 2.2rem;
+  color: black;
+  padding: 4%;
   text-align: center;
-  color: white;
-  background-color: dodgerblue;
-`
+  background-color: cornflowerblue;
+`;
 
 const Form = styled.form`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   padding: 2%;
-  
+  background-color: whitesmoke;
 
   label {
     width: 100%;
@@ -46,25 +46,16 @@ const Form = styled.form`
     width: 100%;
     height: 30px;
   }
-`
+`;
 
 const AddCase = props => {
   const [inputs, setInputs] = useState({
-    socialCaseFname: 'Yeet',
-    socialCaseLname: 'Yeeterson',
-    socialCaseAge: '22',
-    socialCaseFamilyLastKnownLocation: 'Yeet Town',
-    socialCaseContactInfo: 'yeet@yeetmail.com',
-    socialCaseNotes: 'Likes to yeet',
-    // socialCaseHometown: 'placeholder',
-    // socialCaseCurrentTown: 'placeholder',
-    // socialCaseIsSensitive: false,
-    // socialCaseFamilyFName: 'placeholder',
-    // socialCaseFamilyLName: 'placeholder',
-    // socialCaseFamilyAge: 'placeholder',
-    // socialCaseFamilyRelationship: 'placeholder',
-    // socialCaseFamilyNotes: 'placeholder',
-    // user: "id"
+    socialCaseFname: '',
+    socialCaseLname: '',
+    socialCaseAge: '',
+    socialCaseFamilyLastKnownLocation: '',
+    socialCaseContactInfo: '',
+    socialCaseNotes: '',
   });
 
   const handleChange = e => {
@@ -74,9 +65,10 @@ const AddCase = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    console.log('Sending POST:', inputs);
     axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
-      .then(response => console.log('POST Response:', response))
+      .then(response => {
+        // console.log('POST Response:', response)
+      })
       .catch(err => console.log('POST Error:', err));
   }
 
@@ -111,7 +103,7 @@ const AddCase = props => {
         <button type="submit">Create Post</button>
       </Form>
     </FormContainer>
-  )
+  );
 }
 
 export default AddCase;
