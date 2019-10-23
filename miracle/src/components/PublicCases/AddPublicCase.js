@@ -73,26 +73,8 @@ const AddCase = () => {
 
   const submitForm = e => {
     e.preventDefault();
-    const someObj = {
-      "socialCaseId": 88,
-      "socialCaseFname": "Lindsey",
-      "socialCaseLname": "Mac",
-      "socialCaseAge": "21",
-      "socialCaseHometown": "Hollywood",
-      "socialCaseCurrentTown": "New Orleans",
-      "socialCaseContactInfo": "mac@gmail.com",
-      "socialCaseNotes": "These are family add notes",
-      "socialCaseIsSensitive": false,
-      "socialCaseFamilyFName": null,
-      "socialCaseFamilyLName": null,
-      "socialCaseFamilyAge": null,
-      "socialCaseFamilyRelationship": null,
-      "socialCaseFamilyLastKnownLocation": null,
-      "socialCaseFamilyNotes": null,
-      "user": null
-    }
-    console.log('Sending POST:', someObj);
-    axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', someObj)
+    console.log('Sending POST:', inputs);
+    axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
       .then(response => console.log('POST Response:', response))
       .catch(err => console.log('POST Error:', err));
   }
