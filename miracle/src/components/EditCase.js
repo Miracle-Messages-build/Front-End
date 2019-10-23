@@ -4,12 +4,15 @@ import {axiosWithAuth} from '../utils/axiosWithAuth.js'
 
 
 const initialCase = {
+  
  socialCaseFname: '',
     socialCaseLname: '',
     socialCaseAge: '',
     socialCaseHometown: '',
     socialCaseCurrentTown: '',
     socialCaseContactInfo: '',
+    socialCaseId:''
+    // socialCaseId: '',
     // socialCaseIsSensitive: false,
 
     // socialCaseFamilyFName: '',
@@ -48,12 +51,12 @@ const UpdateForm = props => {
     const [info, setInfo] = useState(initialCase);
 
 
-    // useEffect(() => {
-    //     const caseToEdit = props.caseInfo.find(
-    //         data => `${data.id}` === props.match.params.id
-    //     );
-    //     if (caseToEdit) setInfo(caseToEdit);
-    // }, [props.caseInfo, props.match.params.id])
+    useEffect(() => {
+        const caseToEdit = props.caseInfo.find(
+            data => `${data.socialCaseId}` === props.match.params.id
+        );
+        if (caseToEdit) setInfo(caseToEdit);
+    }, [props.caseInfo, props.match.params.id])
 
     const handleChange = event => {
         event.persist();
@@ -68,11 +71,12 @@ const UpdateForm = props => {
         event.preventDefault();
 
         axiosWithAuth()
-            .put(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases${info.id}`, info)
-            .then(response => {
-                props.setCaseInfo([...props.caseInfo, response.data])
-                // props.history.push('/')
-            })
+            .put(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCase/${props.match.params.id}`, info)
+            .then(response=> console.log(response))
+            // .then(response => {
+            //     props.setCaseInfo([...props.caseInfo, response.data])
+            //     // props.history.push('/')
+            // })
             .catch(err => console.log(err))
 
 

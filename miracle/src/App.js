@@ -27,9 +27,10 @@ function App() {
       <Router>
         <h1>Miracle messages</h1>
         <Dashboard />
+        {/* <UpdateForm/> */}
         {/* <AddCase/> */}
       {/* <VolunteerCase/> */}
-      <VolunteerCases/>
+      <VolunteerCases  caseInfo={caseInfo} setCaseInfo={setCaseInfo}/>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/volunteercase" component={VolunteerCase} />
@@ -46,11 +47,13 @@ function App() {
             return <VolunteerCases {...props}  />;
           }} component={VolunteerCases}
         />
-        <PrivateRoute
+
+        
+        <Route
           path="/volunteer/edit/:id"
           render={props => {
             return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
-          }} component={UpdateForm}
+          }} 
         />
       </Router>
     </div>

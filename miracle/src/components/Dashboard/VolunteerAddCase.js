@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
+import {axiosWithAuth} from '../../utils/axiosWithAuth.js'
 const FormContainer = styled.div`
   margin-top: 2%; 
   width: 50%;
@@ -85,7 +86,8 @@ const VolunteerAddCase = () => {
     event.preventDefault()
 
    
-    axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
+    axiosWithAuth()
+    .post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
     .then(response => console.log('POST Response:', response))
 
         .catch((error)=> console.log(error))
