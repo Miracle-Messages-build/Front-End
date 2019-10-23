@@ -72,7 +72,6 @@ const AddCase = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
-<<<<<<< HEAD
   const submitForm = e => {
     e.preventDefault();
     console.log('Sending POST:', inputs);
@@ -80,44 +79,6 @@ const AddCase = () => {
       .then(response => console.log('POST Response:', response))
       .catch(err => console.log('POST Error:', err));
   }
-=======
-
-  const submitForm = event => {
-    event.preventDefault()
-
-   
-    axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
-    .then(response => console.log('POST Response:', response))
-
-        .catch((error)=> console.log(error))
-}
-
-  // const submitForm = e => {
-  //   e.preventDefault();
-  //   const someObj = {
-  //     "socialCaseId": 88,
-  //     "socialCaseFname": "Lindsey",
-  //     "socialCaseLname": "Mac",
-  //     "socialCaseAge": "21",
-  //     "socialCaseHometown": "Hollywood",
-  //     "socialCaseCurrentTown": "New Orleans",
-  //     "socialCaseContactInfo": "mac@gmail.com",
-  //     "socialCaseNotes": "These are family add notes",
-  //     "socialCaseIsSensitive": false,
-  //     "socialCaseFamilyFName": null,
-  //     "socialCaseFamilyLName": null,
-  //     "socialCaseFamilyAge": null,
-  //     "socialCaseFamilyRelationship": null,
-  //     "socialCaseFamilyLastKnownLocation": null,
-  //     "socialCaseFamilyNotes": null,
-  //     "user": null
-  //   }
-  //   console.log('Sending POST:', someObj);
-  //   axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', someObj)
-  //     .then(response => console.log('POST Response:', response))
-  //     .catch(err => console.log('POST Error:', err));
-  // }
->>>>>>> b77f862f6b0267e753515665ca51ffd09e8b17c5
 
   return (
     <FormContainer>

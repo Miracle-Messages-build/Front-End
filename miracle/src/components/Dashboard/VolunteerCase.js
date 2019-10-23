@@ -63,7 +63,7 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
-  // console.log(props,"inside")
+  console.log(props,"inside")
 
 
   return (
@@ -95,7 +95,7 @@ const VolunteerCase = props => {
       <Link to={`/volunteer/edit/${props.cases.socialCaseId}`}>
         <button >Edit Case</button>
         </Link>
-        <button onClick={() => props.deleteCase(props.id)}>Delete Case</button>
+        <button onClick={() => props.deleteCase(props.cases.socialCaseId)}>Delete Case</button>
       </CaseButtons>
     </CaseContainer>
   )
