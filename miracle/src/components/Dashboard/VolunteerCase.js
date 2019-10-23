@@ -39,10 +39,10 @@ const CaseButtons = styled.div`
   display: flex;
   justify-content: center;
 
-  button {
+  a {
     width: 48%;
-    height: 30px;
     margin: 1%;
+    height: 30px;
   }
 `;
 

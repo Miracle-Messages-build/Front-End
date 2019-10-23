@@ -36,7 +36,7 @@ const Dashboard = props => {
         <Route path="/dashboard/addcase" component={VolunteerAddCase} />
       </CaseContainer>
     </div>
-  )
+  );
 }
 
 export default Dashboard;

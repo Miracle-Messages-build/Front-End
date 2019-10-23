@@ -22,13 +22,13 @@ const PublicCases = props => {
   return (
     <div>
       <CaseHeader>
-        <Link to="/publiccases"><button>View Public Cases</button></Link>
-        <Link to="/publiccases/addcase"><button>Add Missing Person</button></Link>
+        <Link to="/public"><button>View Public Cases</button></Link>
+        <Link to="/public/addcase"><button>Add Missing Person</button></Link>
       </CaseHeader>
 
       <CaseContainer>
-        {props.location.pathname === "/publiccases" ? <ViewPublicCases /> : null}
-        <Route path="/publiccases/addcase" component={AddPublicCase} />
+        {props.location.pathname === "/public" ? <ViewPublicCases /> : null}
+        <Route path="/public/addcase" component={AddPublicCase} />
       </CaseContainer>
     </div>
   );
