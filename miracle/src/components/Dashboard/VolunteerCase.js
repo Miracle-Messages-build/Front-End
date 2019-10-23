@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+
+
+import { fetchCase, editCase, addCase, deleteCase } from '../../actions/index.js'
+import { connect } from 'react-redux';;
 
 const CaseContainer = styled.div`
   margin: 2%;
@@ -47,6 +51,7 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
+  console.log(props,"inde")
   return (
     <CaseContainer>
       <CaseHeader>
@@ -78,4 +83,13 @@ const VolunteerCase = props => {
   )
 }
 
-export default VolunteerCase;
+
+const mapStateToProps = state => {
+  return {
+    cases: state.cases,
+    loading: state.loading,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { fetchCase, editCase, addCase, deleteCase })(VolunteerCase);

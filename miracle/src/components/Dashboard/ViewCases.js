@@ -25,15 +25,15 @@ const ViewCases = props => {
   }, [props.viewAllCases])
 
   //Requires authentication! @Taylor
-  const deleteCase = id => {
-    axiosWithAuth()
-      .delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)
-      .then(() => {
-        //We also want to remove the now deleted card from our state
-        setSocialCases(socialCases.filter(socialCase => socialCase.socialCaseId !== id));
-      })
-      .catch(err => console.log(err));
-  }
+  // const deleteCase = id => {
+  //   axiosWithAuth()
+  //     .delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)
+  //     .then(() => {
+  //       //We also want to remove the now deleted card from our state
+  //       setSocialCases(socialCases.filter(socialCase => socialCase.socialCaseId !== id));
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   return (
     <>
@@ -51,7 +51,7 @@ const ViewCases = props => {
           relationship={socialCase.socialCaseFamilyRelationship}
           lastKnownLoc={socialCase.socialCaseFamilyLastKnownLocation}
           extraDetails={socialCase.socialCaseNotes}
-          deleteCase={deleteCase}
+          // deleteCase={deleteCase}
         />
       )) : null}
     </>
