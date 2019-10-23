@@ -5,32 +5,50 @@ import styled from 'styled-components';
 import ViewPublicCases from './ViewPublicCases';
 import AddPublicCase from './AddPublicCase';
 
-const CaseHeader = styled.header`
-  width: 80%;
+const CaseNav = styled.nav`
+  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
+  background-color: cornflowerblue;
+  padding: 1% 0;
+  border-radius: 15px;
+
+  h1 {
+    color: black;
+    font-size: 3rem;
+    margin-bottom: 1%;
+  }
+
+  a {
+    text-decoration: none;
+    margin: 1%;    
+    color: #23293B;
+  }
 `;
 
 const CaseContainer = styled.div`
-width: 100%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
 `;
 
 const PublicCases = props => {
   return (
-    <div>
-      <CaseHeader>
-        <Link to="/public"><button>View Public Cases</button></Link>
-        <Link to="/public/addcase"><button>Add Missing Person</button></Link>
-      </CaseHeader>
+    <>
+      <CaseNav>
+        <h1>Miracle Messages</h1>
+        <Link to="/public">View Public Cases</Link>
+        <Link to="/public/addcase">Add Missing Person</Link>
+      </CaseNav>
 
       <CaseContainer>
         {props.location.pathname === "/public" ? <ViewPublicCases /> : null}
         <Route path="/public/addcase" component={AddPublicCase} />
       </CaseContainer>
-    </div>
+    </>
   );
 }
 
