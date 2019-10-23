@@ -13,13 +13,22 @@ import VolunteerCase from './components/Dashboard/VolunteerCase.js'
 import VolunteerCases from './components/TestForRedux.js'
 import AddCase from './components/PublicCases/AddPublicCase.js'
 import ViewCases from './components/Dashboard/ViewCases.js'
-function App() {
+
+import {fetchCase, editCase, addCase} from './actions/index.js'
+import { connect } from 'react-redux';
+import VolunteerAddCase from './components/Dashboard/VolunteerAddCase';
+
+
+function App(props) {
+  // console.log (props,'propsapp')
   const [caseInfo, setCaseInfo] = useState([])
 
   useEffect(() => {
     axios
       .get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
-      .then(response => console.log(response.data))
+      .then(response => {
+        setCaseInfo( response.data);
+    })
 
   }, [])
 
@@ -38,6 +47,12 @@ function App() {
         <Route path="/volunteercase" component={VolunteerCase} />
         <Route path="/volunteercases" component={VolunteerCases} />
         <PrivateRoute
+          path="/dashboard/add/case"
+          render={props => {
+            return <VolunteerAddCase {...props}  addCase={props.addcase}/>;
+          }} component={VolunteerCase}
+        />
+        <PrivateRoute
           path="/volunteer/case"
           render={props => {
             return <VolunteerCase {...props}  />;
@@ -54,7 +69,7 @@ function App() {
         <Route
           path="/volunteer/edit/:id"
           render={props => {
-            return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
+            return <UpdateForm {...props} editCase={props.editCase} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
           }} 
         />
       </Router>
@@ -64,5 +79,13 @@ function App() {
 }
 
 
+const mapStateToProps = state => {
+  return {
+      cases: state.cases,
+      loading: state.loading,
+      error: state.error
+  }
+}
 
-export default App;
+
+export default connect(mapStateToProps, { fetchCase, editCase, addCase })(App);
