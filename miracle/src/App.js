@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AddPublicCase from './components/PublicCases/AddPublicCase.js'
+import PublicCases from './components/PublicCases/PublicCases'
 import UpdateForm from './components/EditCase.js'
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -23,6 +24,7 @@ function App(props) {
   // console.log (props,'propsapp')
   const [caseInfo, setCaseInfo] = useState([])
 
+
   useEffect(() => {
     axios
       .get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
@@ -30,7 +32,7 @@ function App(props) {
         setCaseInfo( response.data);
     })
 
-  }, [])
+  }, []);
 
   return (
     <div className="App">
@@ -76,8 +78,21 @@ function App(props) {
       </Router>
     </div>
 
-  );
-}
+
+      {/* PROTECTED ROUTES */}
+      <PrivateRoute
+        path="/dashboard"
+        render={props => {
+          return <Dashboard {...props} />;
+        }} component={Dashboard}
+      />
+
+      <PrivateRoute
+        path="/volunteer/case"
+        render={props => {
+          return <VolunteerCase {...props} />;
+        }} component={VolunteerCase}
+      />
 
 
 const mapStateToProps = state => {
@@ -86,6 +101,28 @@ const mapStateToProps = state => {
       loading: state.loading,
       error: state.error
   }
+}
+
+
+      <PrivateRoute
+        path="/volunteer/cases"
+        render={props => {
+          return <VolunteerCases {...props} />;
+        }} component={VolunteerCases}
+      />
+      {/* END PROTECTED ROUTES */}
+
+      {/* <Route path="/volunteercase" component={VolunteerCase} />
+        <Route path="/volunteercases" component={VolunteerCases} /> */}
+
+      <Route
+        path="/volunteer/edit/:id"
+        render={props => {
+          return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
+        }}
+      />
+    </div>
+  );
 }
 
 

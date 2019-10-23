@@ -86,23 +86,23 @@ const AddCase = () => {
       <Form onSubmit={submitForm}>
         <label htmlFor="socialCaseFname">
           First Name
-          <input type="text" name="socialCaseFname"  value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
+          <input type="text" name="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
         </label>
         <label htmlFor="socialCaseLname">
           Last Name
-          <input type="text" name="socialCaseLname"  value={inputs.socialCaseLname} onChange={handleChange} placeholder="Last Name" required />
+          <input type="text" name="socialCaseLname" value={inputs.socialCaseLname} onChange={handleChange} placeholder="Last Name" required />
         </label>
         <label htmlFor="socialCaseAge">
           Age
-          <input type="number" name="socialCaseAge"  value={inputs.socialCaseAge} onChange={handleChange} min="16" max="100" placeholder="Age" required />
+          <input type="number" name="socialCaseAge" value={inputs.socialCaseAge} onChange={handleChange} min="16" max="100" placeholder="Age" required />
         </label>
         <label htmlFor="socialCaseFamilyLastKnownLocation">
           Last Known Location
-          <input type="text" name="socialCaseFamilyLastKnownLocation"  value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City, State" required />
+          <input type="text" name="socialCaseFamilyLastKnownLocation" value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City, State" required />
         </label>
         <label htmlFor="socialCaseContactInfo">
           Contact Info
-          <input type="text" name="socialCaseContactInfo"  value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
+          <input type="text" name="socialCaseContactInfo" value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
         </label>
         <label htmlFor="socialCaseNotes">
           Extra Details

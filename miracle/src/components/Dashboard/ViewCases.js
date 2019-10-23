@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import VolunteerCase from './VolunteerCase';
@@ -7,23 +7,25 @@ const ViewCases = props => {
   const [socialCases, setSocialCases] = useState(null);
 
   useEffect(() => {
-    axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
-      .then(response => {
-        if (props.viewAllCases) {
-          setSocialCases(response.data);
-        } else {
-          //     /* Waiting for backend to implement user id to case */
-
-          //     //userID would be probably coming from localstorage
-          //     const userId = 0;
-
-          //     //This will set our cases state to only include cases that match the user's id.
-          //     setSocialCases(response.data.filter(socialCase => socialCase.user === userId));  
-        }
-      })
-      .catch(err => console.log(err));
+    if (props.viewAllCases) {
+      axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
+        .then(response => {
+          setSocialCases(response.data.filter(socialCase => socialCase.user !== null));
+        })
+        .catch(err => console.log(err));
+    } else {
+      //Requires authentication! @Taylor
+      axios.get('https://lindseyacason-miraclemessages.herokuapp.com/users/getuserinfo')
+        .then(response => {
+          console.log(response)
+          //I think the object was response.data.socialCases [array], will need to log the response to make sure
+          // setSocialCases(response.data.socialCases);
+        })
+        .catch(err => console.log(err));
+    }
   }, [props.viewAllCases])
 
+  //Requires authentication! @Taylor
   const deleteCase = id => {
     axios.delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)
       .then(() => {
@@ -44,16 +46,16 @@ const ViewCases = props => {
           homeTown={socialCase.socialCaseHomeTown}
           currentCity={socialCase.socialCaseCurrentTown}
           contact={socialCase.socialCaseContactInfo}
-          familyName={'missing from backend'}
-          familyAge={'missing from backend'}
-          relationship={'missing from backend'}
-          lastKnownLoc={'missing from backend'}
+          familyName={`${socialCase.socialCaseFamilyFName} ${socialCase.socialCaseFamilyLName}`}
+          familyAge={socialCase.socialCaseFamilyAge}
+          relationship={socialCase.socialCaseFamilyRelationship}
+          lastKnownLoc={socialCase.socialCaseFamilyLastKnownLocation}
           extraDetails={socialCase.socialCaseNotes}
           deleteCase={deleteCase}
         />
       )) : null}
     </>
-  )
+  );
 }
 
 export default ViewCases;
