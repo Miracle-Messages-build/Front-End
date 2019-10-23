@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -16,7 +16,7 @@ width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-`
+`;
 
 const PublicCases = props => {
   return (
@@ -31,7 +31,7 @@ const PublicCases = props => {
         <Route path="/publiccases/addcase" component={AddPublicCase} />
       </CaseContainer>
     </div>
-  )
+  );
 }
 
 export default PublicCases;
