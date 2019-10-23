@@ -3,41 +3,25 @@ import styled from 'styled-components';
 
 const CaseContainer = styled.div`
   margin: 2%;
-  margin-top: 10%;
-  width: 15%;
+  margin-top: 5%;
+  width: 16%;
   max-height: 160px;
+  background-color: whitesmoke;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-    p {
-      font-style: italic;
-    }
-
-    li {
-      padding: 0;
-      margin: 0;
-    }
-  }
 `;
 
 const CaseHeader = styled.h1`
-  font-size: 2rem;
-  color: whitesmoke;
+  font-size: 2.2rem;
+  letter-spacing: .15rem;
   text-align: center;
-  margin: 0;
-  padding: 0;
-  background-color: dodgerblue;
+  color: black;
+  padding: 3%;
+  background-color: cornflowerblue;
 `;
 
 const CaseBody = styled.div`  
-  display: flex;
   width: 100%;
-  height: 60%;
-  align-items: center;
-  padding: 3%;
+  padding: 5%;
 `;
 
 const PublicCase = props => {

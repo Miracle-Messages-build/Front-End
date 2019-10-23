@@ -28,7 +28,7 @@ const ViewPublicCases = (props) => {
   if (props.loading) {
     return <h1>Loading...</h1>
 }
-
+  
   return (
     <>
       {publicCases ? publicCases.map((publicCase, idx) => (

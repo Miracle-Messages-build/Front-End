@@ -39,14 +39,12 @@ const Dashboard = props => {
       <CaseContainer>
         {props.location.pathname === "/dashboard" ? <ViewCases /> : null}
         <Route path="/dashboard/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} />
-        {/* <Route path="/dashboard/addcase" component={VolunteerAddCase} /> */}
         <PrivateRoute
           exact path="/dashboard/add/case"
           render={props => {
             return <VolunteerAddCase {...props} addCase={props.addcase} />;
           }} component={VolunteerAddCase}
         />
-
       </CaseContainer>
     </div>
   );
