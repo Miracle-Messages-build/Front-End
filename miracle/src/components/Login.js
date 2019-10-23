@@ -30,7 +30,7 @@ const Login = (props) => {
             // .then(response => console.log(response, "login"))
             .then(response => {
                 localStorage.setItem('token', response.data.access_token);
-                props.history.push('/signup')
+                props.history.push('/dashboard')
 
             })
             .catch(err => console.log(err.response));
@@ -39,7 +39,7 @@ const Login = (props) => {
 
     }
 
-    
+
     return (
         <>
             <form className="login-form" onSubmit={handleLogin}>
