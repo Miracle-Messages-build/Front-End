@@ -56,21 +56,23 @@ const AddCase = () => {
     socialCaseFamilyLastKnownLocation: 'Yeet Town',
     socialCaseContactInfo: 'yeet@yeetmail.com',
     socialCaseNotes: 'Likes to yeet',
-    socialCaseHometown: 'placeholder',
-    socialCaseCurrentTown: 'placeholder',
-    socialCaseIsSensitive: false,
-    socialCaseFamilyFName: 'placeholder',
-    socialCaseFamilyLName: 'placeholder',
-    socialCaseFamilyAge: 'placeholder',
-    socialCaseFamilyRelationship: 'placeholder',
-    socialCaseFamilyNotes: 'placeholder',
-    "user": null
+    // socialCaseHometown: 'placeholder',
+    // socialCaseCurrentTown: 'placeholder',
+    // socialCaseIsSensitive: false,
+    // socialCaseFamilyFName: 'placeholder',
+    // socialCaseFamilyLName: 'placeholder',
+    // socialCaseFamilyAge: 'placeholder',
+    // socialCaseFamilyRelationship: 'placeholder',
+    // socialCaseFamilyNotes: 'placeholder',
+    // user: "id"
   });
 
   const handleChange = e => {
+    e.persist();
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
+<<<<<<< HEAD
   const submitForm = e => {
     e.preventDefault();
     console.log('Sending POST:', inputs);
@@ -78,6 +80,44 @@ const AddCase = () => {
       .then(response => console.log('POST Response:', response))
       .catch(err => console.log('POST Error:', err));
   }
+=======
+
+  const submitForm = event => {
+    event.preventDefault()
+
+   
+    axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
+    .then(response => console.log('POST Response:', response))
+
+        .catch((error)=> console.log(error))
+}
+
+  // const submitForm = e => {
+  //   e.preventDefault();
+  //   const someObj = {
+  //     "socialCaseId": 88,
+  //     "socialCaseFname": "Lindsey",
+  //     "socialCaseLname": "Mac",
+  //     "socialCaseAge": "21",
+  //     "socialCaseHometown": "Hollywood",
+  //     "socialCaseCurrentTown": "New Orleans",
+  //     "socialCaseContactInfo": "mac@gmail.com",
+  //     "socialCaseNotes": "These are family add notes",
+  //     "socialCaseIsSensitive": false,
+  //     "socialCaseFamilyFName": null,
+  //     "socialCaseFamilyLName": null,
+  //     "socialCaseFamilyAge": null,
+  //     "socialCaseFamilyRelationship": null,
+  //     "socialCaseFamilyLastKnownLocation": null,
+  //     "socialCaseFamilyNotes": null,
+  //     "user": null
+  //   }
+  //   console.log('Sending POST:', someObj);
+  //   axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', someObj)
+  //     .then(response => console.log('POST Response:', response))
+  //     .catch(err => console.log('POST Error:', err));
+  // }
+>>>>>>> b77f862f6b0267e753515665ca51ffd09e8b17c5
 
   return (
     <FormContainer>
@@ -85,27 +125,27 @@ const AddCase = () => {
       <Form onSubmit={submitForm}>
         <label htmlFor="socialCaseFname">
           First Name
-          <input type="text" name="socialCaseFname" id="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
+          <input type="text" name="socialCaseFname"  value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
         </label>
         <label htmlFor="socialCaseLname">
           Last Name
-          <input type="text" name="socialCaseLname" id="socialCaseLname" value={inputs.socialCaseLname} onChange={handleChange} placeholder="Last Name" required />
+          <input type="text" name="socialCaseLname"  value={inputs.socialCaseLname} onChange={handleChange} placeholder="Last Name" required />
         </label>
         <label htmlFor="socialCaseAge">
           Age
-          <input type="number" name="socialCaseAge" id="socialCaseAge" value={inputs.socialCaseAge} onChange={handleChange} min="16" max="100" placeholder="Age" required />
+          <input type="number" name="socialCaseAge"  value={inputs.socialCaseAge} onChange={handleChange} min="16" max="100" placeholder="Age" required />
         </label>
         <label htmlFor="socialCaseFamilyLastKnownLocation">
           Last Known Location
-          <input type="text" name="socialCaseFamilyLastKnownLocation" id="socialCaseFamilyLastKnownLocation" value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City, State" required />
+          <input type="text" name="socialCaseFamilyLastKnownLocation"  value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City, State" required />
         </label>
         <label htmlFor="socialCaseContactInfo">
           Contact Info
-          <input type="text" name="socialCaseContactInfo" id="socialCaseContactInfo" value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
+          <input type="text" name="socialCaseContactInfo"  value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
         </label>
         <label htmlFor="socialCaseNotes">
           Extra Details
-          <textarea name="socialCaseNotes" id="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" required />
+          <textarea name="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" required />
         </label>
         <button type="submit">Create Post</button>
       </Form>

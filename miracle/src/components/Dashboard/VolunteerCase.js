@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 /*
 Volunteer Case should have:
@@ -62,7 +63,9 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
-  console.log(props)
+  // console.log(props,"inside")
+
+
   return (
     
     <CaseContainer>
@@ -70,22 +73,28 @@ const VolunteerCase = props => {
         {props.isResolved ? 'CLOSED CASE' : 'OPEN CASE'}
       </CaseHeader>
       <CaseBody>
+       
         <ul>
-          <li>{props.name}, Age: {props.age}</li>
-          <li>Home Town: {props.homeTown}</li>
-          <li>Current City: {props.currentCity}</li>
-          <li>Contact: {props.contact}</li>
+          <li>{props.cases.socialCaseFname}, Age: {props.cases.socialCaseAge}</li>
+          <li>Home Town: {props.cases.socialCaseHometown}</li>
+          <li>Current City: {props.cases.socialCaseCurrentTown}</li>
+          <li>Contact: {props.cases.socialCaseContactInfo}</li>
         </ul>
+
+
+      
         <ul>
           <p>Is Searching For</p>
-          <li>{props.familyName}, {props.familyAge}</li>
-          <li>Relationship: {props.relationship}</li>
-          <li>Last Known Location: {props.lastKnownLoc}</li>
+          <li>{props.cases.socialCaseFamilyFName}, {props.cases.socialCaseFamilyLName}</li>
+          <li>Relationship: {props.cases.socialCaseFamilyRelationship}</li>
+          <li>Last Known Location: {props.cases.socialCaseFamilyLastKnownLocation}</li>
         </ul>
-        <p>{props.extraDetails}</p>
+        <p>{props.cases.socialCaseFamilyNotes}</p>
       </CaseBody>
       <CaseButtons>
-        <button onClick={() => alert(`Edit case ${props.id}`)}>Edit Case</button>
+      <Link to={`/volunteer/edit/${props.cases.socialCaseId}`}>
+        <button >Edit Case</button>
+        </Link>
         <button onClick={() => props.deleteCase(props.id)}>Delete Case</button>
       </CaseButtons>
     </CaseContainer>

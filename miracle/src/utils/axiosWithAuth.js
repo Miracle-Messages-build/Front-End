@@ -4,10 +4,11 @@ export const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
 
     return axios.create({
-        // baseURL: 'https://lindseyacason-miraclemessages.herokuapp.com',
+      
         headers: {
             Authorization: `Bearer ${token}`,
-         
+            // token: token,
+            'Content-Type': 'application/json'
         }
     });
 };
