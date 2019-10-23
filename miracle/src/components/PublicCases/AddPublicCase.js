@@ -48,7 +48,7 @@ const Form = styled.form`
   }
 `
 
-const AddCase = () => {
+const AddCase = props => {
   const [inputs, setInputs] = useState({
     socialCaseFname: 'Yeet',
     socialCaseLname: 'Yeeterson',
@@ -83,7 +83,7 @@ const AddCase = () => {
   return (
     <FormContainer>
       <FormHeader>Add Lost Family Member</FormHeader>
-      <Form onSubmit={submitForm}>
+      <Form onSubmit={e => { props.history.push('/public'); submitForm(e); }}>
         <label htmlFor="socialCaseFname">
           First Name
           <input type="text" name="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
