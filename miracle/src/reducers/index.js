@@ -1,13 +1,8 @@
-import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, POST_START, POST_SUCCESS, POST_FAILURE, DELETE_SUCCESS, DELETE_START } from '../actions/index.js'
+import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, POST_START, POST_SUCCESS, POST_FAILURE, DELETE_SUCCESS, DELETE_START, EDIT_START,EDIT_SUCCESS } from '../actions/index.js'
 
 
 const initialState = {
     cases: [
-
-        // { id: 1, name: "V-6 engine" },
-        // { id: 2, name: "Racing detail package"},
-        // { id: 3, name: "Premium sound system"},
-        // { id: 4, name: "Rear spoiler" }
 
     ],
     loading: false,
@@ -76,6 +71,23 @@ const reducer = (state = initialState, action) => {
                 loading: true,
                 error: ''
             }
+            case EDIT_START:
+                return {
+                    ...state,
+                    loading: true,
+                    error: ''
+                }
+                
+
+                case EDIT_SUCCESS:
+                    return {
+                        ...state,
+                        loading: false,
+                        error: '',
+                        cases: action.payload
+
+                        
+                    }
 
         default:
             return state;

@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js'
+
+import {fetchCase, editCase, addCase} from '../../actions/index.js'
+import { connect } from 'react-redux';
+
 const FormContainer = styled.div`
   margin-top: 2%; 
   width: 50%;
@@ -60,7 +64,8 @@ const FormSection = styled.div`
   }
 `;
 
-const VolunteerAddCase = () => {
+const VolunteerAddCase = (props) => {
+  // console.log(props,'inaddd')
   const [inputs, setInputs] = useState({
     socialCaseFname: '',
     socialCaseLname: '',
@@ -82,21 +87,27 @@ const VolunteerAddCase = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
-  const submitForm = event => {
-    event.preventDefault()
 
-
-    axiosWithAuth()
-      .post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
-      .then(response => console.log('POST Response:', response))
-
-      .catch((error) => console.log(error))
+  const handleSubmit = event => {
+    console.log(inputs, "new")
+    event.preventDefault();
+    props.addCase(inputs);
   }
+  // const submitForm = event => {
+  //   event.preventDefault()
+
+
+  //   axiosWithAuth()
+  //     .post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
+  //     .then(response => console.log('POST Response:', response))
+
+  //     .catch((error) => console.log(error))
+  // }
 
   return (
     <FormContainer>
       <FormHeader></FormHeader>
-      <Form onSubmit={submitForm}>
+      <Form >
         <FormMain>
 
           <FormSection>
@@ -156,10 +167,20 @@ const VolunteerAddCase = () => {
             </label>
           </FormSection>
         </FormMain>
-        <button type="submit">Add New Case</button>
+        {/* <button type="submit">Add New Case</button> */}
+        <button onClick={handleSubmit}>Add</button>
       </Form>
     </FormContainer>
   )
 }
 
-export default VolunteerAddCase;
+const mapStateToProps = state => {
+  return {
+      cases: state.cases,
+      loading: state.loading,
+      error: state.error
+  }
+}
+
+
+export default connect(mapStateToProps, { fetchCase, editCase, addCase })(VolunteerAddCase);

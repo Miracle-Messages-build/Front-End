@@ -72,7 +72,7 @@ const VolunteerCase = props => {
         <Link to={`/volunteer/edit/${props.id}`}>
           <button >Edit Case</button>
         </Link>
-        <button onClick={() => props.deleteCase(props.id)}>Delete Case</button>
+        <button onClick={() => props.deleteCase(props.cases.socialCaseId)}>Delete Case</button>
       </CaseButtons>
     </CaseContainer>
   )

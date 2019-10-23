@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 
 const SignUp = (props) => {
-console.log (props,"in signup")
+// console.log (props,"in signup")
   // {
   //     "password": "string",
   //     "primaryemail": "string",
