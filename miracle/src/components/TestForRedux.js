@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { fetchCase, deleteCase } from '../actions/index.js'
-import VolunteerCase from './VolunteerCase.js'
+import VolunteerCase from './Dashboard/VolunteerCase.js'
 
 
 
@@ -11,15 +11,15 @@ const VolunteerCases = (props) => {
         props.fetchCase();
     }, [])
 
-    if (props.loading) {
-        return <h1>Loading...</h1>
-    }
+    // if (props.loading) {
+    //     return <h1>Loading...</h1>
+    // }
 
     return (
 
         <div>
-
-            {props.error && <p>{props.error}</p>}
+            <h1>hello t</h1>
+            {/* {props.error && <p>{props.error}</p>} */}
 
 
             {props.cases.map(cases => (

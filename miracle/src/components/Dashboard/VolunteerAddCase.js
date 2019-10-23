@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import axios from 'axios'
 const FormContainer = styled.div`
   margin-top: 2%; 
   width: 50%;
@@ -81,10 +81,15 @@ const VolunteerAddCase = () => {
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
-  const submitForm = e => {
-    e.preventDefault();
-    console.log(inputs);
-  }
+  const submitForm = event => {
+    event.preventDefault()
+
+   
+    axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
+    .then(response => console.log('POST Response:', response))
+
+        .catch((error)=> console.log(error))
+}
 
   return (
     <FormContainer>
