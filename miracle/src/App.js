@@ -27,11 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      <Link to="/login">Login</Link> <br />
-      <Link to="/signup">Sign Up</Link> <br />
-      <Link to="/public">Public</Link> <br />
-      <Link to="/dashboard">Dashboard</Link>
-
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/public" component={PublicCases} />
