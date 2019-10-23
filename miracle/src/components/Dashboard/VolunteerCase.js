@@ -63,7 +63,7 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
-  console.log(props,"inside")
+  // console.log(props,"inside")
 
 
   return (

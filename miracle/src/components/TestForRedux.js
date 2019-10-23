@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCase, deleteCase } from '../actions/index.js'
 import VolunteerCase from './Dashboard/VolunteerCase.js'
 import {axiosWithAuth} from '../utils/axiosWithAuth.js'
-
+import Dashboard from './Dashboard/Dashboard.js'
 
 
 const VolunteerCases = (props) => {
@@ -29,6 +29,7 @@ const VolunteerCases = (props) => {
     return (
 
         <div>
+            <Dashboard /> 
           
             {props.error && <p>{props.error}</p>}
 

@@ -22,6 +22,10 @@ const CaseContainer = styled.div`
 `;
 
 const Dashboard = props => {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  };
   return (
     <div>
       <DashHeader>
@@ -45,7 +49,7 @@ const Dashboard = props => {
         {/* {props.location.pathname === "/dashboard" ? <ViewCases viewAllCases /> : null}
         <Route path="/dashboard/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} /> */}
         <Route path="/dashboard/addcase" component={VolunteerAddCase} />
-       
+        <button onClick={handleLogout}>Logout</button>
       </CaseContainer>
     </div>
   )

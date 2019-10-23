@@ -65,7 +65,7 @@ const FormSection = styled.div`
 `;
 
 const VolunteerAddCase = (props) => {
-  console.log(props,'inaddd')
+  // console.log(props,'inaddd')
   const [inputs, setInputs] = useState({
     socialCaseFname: '',
     socialCaseLname: '',
