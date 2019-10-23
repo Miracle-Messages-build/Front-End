@@ -66,7 +66,7 @@ const UpdateForm = props => {
 
 
     <>
-      <form className="signup-form" onSubmit={handleLogin}>
+      <form className="signup-form" onSubmit={e => { props.history.push('/dashboard'); handleLogin(e) }}>
         <h1>Update</h1>
         <input
           type="text"

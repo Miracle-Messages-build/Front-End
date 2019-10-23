@@ -11,15 +11,13 @@ const ViewCases = props => {
     if (props.viewAllCases) {
       axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
         .then(response => {
-          setSocialCases(response.data.filter(socialCase => socialCase.user !== null));
+          setSocialCases(response.data.filter(socialCase => socialCase.user !== null && !socialCase.socialCaseIsSensitive));
         })
         .catch(err => console.log(err));
     } else {
       axiosWithAuth()
         .get('https://lindseyacason-miraclemessages.herokuapp.com/users/getuserinfo')
         .then(response => {
-          // console.log(response)
-          //I think the object was response.data.socialCases [array], will need to log the response to make sure
           setSocialCases(response.data.socialCases);
         })
         .catch(err => console.log(err));

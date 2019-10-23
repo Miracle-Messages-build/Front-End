@@ -65,7 +65,6 @@ const FormSection = styled.div`
 `;
 
 const VolunteerAddCase = (props) => {
-  // console.log(props,'inaddd')
   const [inputs, setInputs] = useState({
     socialCaseFname: '',
     socialCaseLname: '',
@@ -73,7 +72,7 @@ const VolunteerAddCase = (props) => {
     socialCaseHometown: '',
     socialCaseCurrentTown: '',
     socialCaseContactInfo: '',
-    socialCaseIsSensitive: false,
+    socialCaseIsSensitive: '',
 
     socialCaseFamilyFName: '',
     socialCaseFamilyLName: '',
@@ -84,7 +83,8 @@ const VolunteerAddCase = (props) => {
   });
 
   const handleChange = e => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value })
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    setInputs({ ...inputs, [e.target.name]: value });
   }
 
   const handleSubmit = event => {
@@ -168,7 +168,7 @@ const VolunteerAddCase = (props) => {
           </FormSection>
         </FormMain>
         {/* <button type="submit">Add New Case</button> */}
-        <button onClick={handleSubmit}>Add</button>
+        <button onClick={e => { props.history.push('/dashboard'); handleSubmit(e); }}>Add</button>
       </Form>
     </FormContainer>
   )
