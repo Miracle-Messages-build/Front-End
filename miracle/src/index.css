@@ -71,6 +71,8 @@ code {
     monospace;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Architects+Daughter&display=swap');
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Architects Daughter', cursive;
   color: black;
