@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { fetchCase, editCase, addCase } from './actions/index.js'
 import axios from 'axios';
@@ -27,6 +27,11 @@ function App() {
 
   return (
     <div className="App">
+      <Link to="/login">Login</Link> <br />
+      <Link to="/signup">Sign Up</Link> <br />
+      <Link to="/public">Public</Link> <br />
+      <Link to="/dashboard">Dashboard</Link>
+
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/public" component={PublicCases} />
