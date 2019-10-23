@@ -14,6 +14,7 @@ import VolunteerCase from './components/Dashboard/VolunteerCase.js'
 import VolunteerCases from './components/TestForRedux.js'
 import AddCase from './components/PublicCases/AddPublicCase.js'
 import ViewCases from './components/Dashboard/ViewCases.js'
+import Nav from './components/NavBar.js'
 
 import { fetchCase, editCase, addCase } from './actions/index.js'
 import { connect } from 'react-redux';
@@ -34,7 +35,8 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>Miracle messages</h1>
+        <Route  path="/" component={Nav}/>
+    
 
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
