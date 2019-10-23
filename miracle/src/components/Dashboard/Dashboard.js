@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import ViewCases from './ViewCases';
 import VolunteerAddCase from './VolunteerAddCase';
+import PrivateRoute from '../PrivateRoute'
 
 const DashHeader = styled.header`
   width: 80%;
@@ -30,15 +31,21 @@ const Dashboard = props => {
         <nav>
           <Link to="/dashboard"><button>Dashboard</button></Link>
           <Link to="/dashboard/viewallcases"><button>View All Cases</button></Link>
-          <Link to="/dashboard/addcase"><button>Add Case</button></Link>
+          <Link to="/dashboard/add/case"><button>Add Case</button></Link>
+          <button onClick={handleLogout}>Logout</button>
+
         </nav>
       </DashHeader>
       <CaseContainer>
         {props.location.pathname === "/dashboard" ? <ViewCases /> : null}
         <Route path="/dashboard/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} />
-        <Route path="/dashboard/addcase" component={VolunteerAddCase} />
-
-        <button onClick={handleLogout}>Logout</button>
+        {/* <Route path="/dashboard/addcase" component={VolunteerAddCase} /> */}
+        <PrivateRoute
+          exact path="/dashboard/add/case"
+          render={props => {
+            return <VolunteerAddCase {...props} addCase={props.addcase} />;
+          }} component={VolunteerAddCase}
+        />
 
       </CaseContainer>
     </div>

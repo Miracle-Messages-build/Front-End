@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import VolunteerCase from './VolunteerCase';
 
 const ViewCases = props => {
@@ -14,12 +15,12 @@ const ViewCases = props => {
         })
         .catch(err => console.log(err));
     } else {
-      //Requires authentication! @Taylor
-      axios.get('https://lindseyacason-miraclemessages.herokuapp.com/users/getuserinfo')
+      axiosWithAuth()
+        .get('https://lindseyacason-miraclemessages.herokuapp.com/users/getuserinfo')
         .then(response => {
-          console.log(response)
+          // console.log(response)
           //I think the object was response.data.socialCases [array], will need to log the response to make sure
-          // setSocialCases(response.data.socialCases);
+          setSocialCases(response.data.socialCases);
         })
         .catch(err => console.log(err));
     }
@@ -27,7 +28,8 @@ const ViewCases = props => {
 
   //Requires authentication! @Taylor
   const deleteCase = id => {
-    axios.delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)
+    axiosWithAuth()
+      .delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)
       .then(() => {
         //We also want to remove the now deleted card from our state
         setSocialCases(socialCases.filter(socialCase => socialCase.socialCaseId !== id));

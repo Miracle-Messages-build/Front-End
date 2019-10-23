@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios'
 import { axiosWithAuth } from '../../utils/axiosWithAuth.js'
 
-import {fetchCase, editCase, addCase} from '../../actions/index.js'
+import { fetchCase, editCase, addCase } from '../../actions/index.js'
 import { connect } from 'react-redux';
 
 const FormContainer = styled.div`
@@ -87,12 +87,12 @@ const VolunteerAddCase = (props) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
-
   const handleSubmit = event => {
     console.log(inputs, "new")
     event.preventDefault();
     props.addCase(inputs);
   }
+
   // const submitForm = event => {
   //   event.preventDefault()
 
@@ -176,11 +176,10 @@ const VolunteerAddCase = (props) => {
 
 const mapStateToProps = state => {
   return {
-      cases: state.cases,
-      loading: state.loading,
-      error: state.error
+    cases: state.cases,
+    loading: state.loading,
+    error: state.error
   }
 }
-
 
 export default connect(mapStateToProps, { fetchCase, editCase, addCase })(VolunteerAddCase);
