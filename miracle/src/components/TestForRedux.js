@@ -12,9 +12,9 @@ const VolunteerCases = (props) => {
         props.fetchCase();
     }, [])
 
-    if (props.loading) {
-        return <h1>Loading...</h1>
-    }
+    // if (props.loading) {
+    //     return <h1>Loading...</h1>
+    // }
     // const deleteCase = id => {
     //     axiosWithAuth()
     //     .delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)

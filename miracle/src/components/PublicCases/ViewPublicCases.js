@@ -3,17 +3,32 @@ import axios from 'axios';
 
 import PublicCase from './PublicCase';
 
-const ViewPublicCases = () => {
+import { fetchCase, editCase, addCase, deleteCase } from '../../actions/index.js'
+import { connect } from 'react-redux';;
+
+
+const ViewPublicCases = (props) => {
+  
+  useEffect(() => {
+    props.fetchCase();
+}, [])
+
+   
   const [publicCases, setPublicCases] = useState(null);
 
   useEffect(() => {
-    axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
-      .then(response => {
-        setPublicCases(response.data.filter(socialCase => socialCase.user === null));
-      })
-      .catch(err => console.log(err));
-  }, []);
-
+    // axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
+    //   .then(response => {
+    //     console.log('Get Response', response)
+      
+        
+        setPublicCases(props.cases.filter(socialCase => socialCase.user === null));
+    
+  }, [props.cases]);
+  if (props.loading) {
+    return <h1>Loading...</h1>
+}
+  
   return (
     <>
       {publicCases ? publicCases.map((publicCase, idx) => (
@@ -31,4 +46,14 @@ const ViewPublicCases = () => {
   );
 }
 
-export default ViewPublicCases;
+
+
+const mapStateToProps = state => {
+  return {
+    cases: state.cases,
+    loading: state.loading,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { fetchCase, editCase, addCase, deleteCase })(ViewPublicCases);
