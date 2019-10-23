@@ -10,7 +10,8 @@ const ViewPublicCases = () => {
     axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
       .then(response => {
         console.log('Get Response', response)
-        setPublicCases(response.data);
+        // setPublicCases(response.data);
+        setPublicCases(response.data.filter(socialCase => socialCase.user === null));
       })
       .catch(err => console.log(err));
   }, []);

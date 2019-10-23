@@ -15,76 +15,46 @@ import VolunteerCases from './components/TestForRedux.js'
 import AddCase from './components/PublicCases/AddPublicCase.js'
 import ViewCases from './components/Dashboard/ViewCases.js'
 
-import {fetchCase, editCase, addCase} from './actions/index.js'
+import { fetchCase, editCase, addCase } from './actions/index.js'
 import { connect } from 'react-redux';
 import VolunteerAddCase from './components/Dashboard/VolunteerAddCase';
+import PublicCase from './components/PublicCases/PublicCase';
 
 
 function App(props) {
-  // console.log (props,'propsapp')
   const [caseInfo, setCaseInfo] = useState([])
-
 
   useEffect(() => {
     axios
       .get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
       .then(response => {
-        setCaseInfo( response.data);
-    })
-
+        setCaseInfo(response.data);
+      })
   }, []);
 
   return (
     <div className="App">
-      <Router>
-        <h1>Miracle messages</h1>
-        {/* <Dashboard /> */}
-        <ViewCases/>
-        {/* <UpdateForm/> */}
-        {/* <AddCase/> */}
-      {/* <VolunteerCase/> */}
-      {/* <VolunteerCases  caseInfo={caseInfo} setCaseInfo={setCaseInfo}/> */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
-        {/* <Route exact path="/volunteercase" component={VolunteerCase} />
-        <Route exact path="/volunteercases" component={VolunteerCases} /> */}
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute
-         exact path="/dashboard/add/case"
-          render={props => {
-            return <VolunteerAddCase {...props}  addCase={props.addcase}/>;
-          }} component={VolunteerCase}
-        />
-        <PrivateRoute
-          path="/volunteer/case"
-          render={props => {
-            return <VolunteerCase {...props}  />;
-          }} component={VolunteerCase}
-        />
-        <PrivateRoute
-          path="/volunteer/cases"
-          render={props => {
-            return <VolunteerCases {...props}  />;
-          }} component={VolunteerCases}
-        />
+      <h1>Miracle messages</h1>
 
-        
-        <Route
-          path="/volunteer/edit/:id"
-          render={props => {
-            return <UpdateForm {...props} editCase={props.editCase} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
-          }} 
-        />
-      </Router>
-    </div>
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={SignUp} />
+      <Route path="/public" component={PublicCases} />
 
+      {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
 
-      {/* PROTECTED ROUTES */}
-      <PrivateRoute
+      {/* <PrivateRoute
+        exact path="/dashboard/add/case"
+        render={props => {
+          return <VolunteerAddCase {...props} addCase={props.addcase} />;
+        }} component={VolunteerAddCase}
+      /> */}
+
+      < PrivateRoute
         path="/dashboard"
         render={props => {
           return <Dashboard {...props} />;
-        }} component={Dashboard}
+        }
+        } component={Dashboard}
       />
 
       <PrivateRoute
@@ -94,36 +64,36 @@ function App(props) {
         }} component={VolunteerCase}
       />
 
-
-const mapStateToProps = state => {
-  return {
-      cases: state.cases,
-      loading: state.loading,
-      error: state.error
-  }
-}
-
-
       <PrivateRoute
         path="/volunteer/cases"
         render={props => {
           return <VolunteerCases {...props} />;
         }} component={VolunteerCases}
       />
-      {/* END PROTECTED ROUTES */}
-
-      {/* <Route path="/volunteercase" component={VolunteerCase} />
-        <Route path="/volunteercases" component={VolunteerCases} /> */}
 
       <Route
         path="/volunteer/edit/:id"
         render={props => {
-          return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
+          return <UpdateForm {...props} editCase={props.editCase} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
         }}
       />
-    </div>
+
+      {/* <Route
+        path="/volunteer/edit/:id"
+        render={props => {
+          return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
+        }}
+      /> */}
+    </div >
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    cases: state.cases,
+    loading: state.loading,
+    error: state.error
+  }
+}
 
 export default connect(mapStateToProps, { fetchCase, editCase, addCase })(App);
