@@ -94,7 +94,7 @@ const VolunteerCase = props => {
         <p>{props.cases.socialCaseFamilyNotes}</p>
       </CaseBody>
       <CaseButtons>
-      <Link to={`/volunteer/edit/:id${props.cases.socialCaseId}`}>
+      <Link to={`/volunteer/edit/${props.cases.socialCaseId}`}>
         <button >Edit Case</button>
         </Link>
         <button onClick={() => props.deleteCase(props.id)}>Delete Case</button>

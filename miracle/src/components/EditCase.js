@@ -3,15 +3,15 @@ import axios from 'axios';
 import {axiosWithAuth} from '../utils/axiosWithAuth.js'
 
 
-const initialCase = {
+const initialInfo = {
   
  socialCaseFname: '',
-    socialCaseLname: '',
-    socialCaseAge: '',
-    socialCaseHometown: '',
-    socialCaseCurrentTown: '',
-    socialCaseContactInfo: '',
-    socialCaseId:''
+    // socialCaseLname: '',
+    // socialCaseAge: '',
+    // socialCaseHometown: '',
+    // socialCaseCurrentTown: '',
+    // socialCaseContactInfo: '',
+    // socialCaseId:''
     // socialCaseId: '',
     // socialCaseIsSensitive: false,
 
@@ -48,12 +48,12 @@ const initialCase = {
 
 const UpdateForm = props => {
     console.log(props, 'props in update')
-    const [info, setInfo] = useState(initialCase);
+    const [info, setInfo] = useState(initialInfo);
 
 
     useEffect(() => {
         const caseToEdit = props.caseInfo.find(
-            data => `${data.socialCaseId}` === props.match.params.id
+            data => `${data.id}` === props.match.params.id
         );
         if (caseToEdit) setInfo(caseToEdit);
     }, [props.caseInfo, props.match.params.id])
@@ -157,7 +157,7 @@ const UpdateForm = props => {
           onChange={handleChange}
           placeholder="First Name"
         />
-        <input
+        {/* <input
           type="text"
           name="socialCaseLname"
           value={info.socialCaseLname}
@@ -191,7 +191,7 @@ const UpdateForm = props => {
           value={info.socialCaseContactInfo}
           onChange={handleChange}
           placeholder="Contact"
-        />
+        /> */}
     
         <button>Sign up</button>
 
