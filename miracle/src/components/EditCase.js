@@ -1,116 +1,159 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { axiosWithAuth } from '../utils/axiosWithAuth.js'
 
 
-const initialCase = {
-    id: '',
-    name: '',
-    hometown: '',
-    current_city: '',
-    current_state: '',
-    contact: ''
-}
+const initialInfo = {
 
+  socialCaseFname: '',
+  socialCaseLname: '',
+  socialCaseAge: '',
+  socialCaseHometown: '',
+  socialCaseCurrentTown: '',
+  socialCaseFamilyRelationship: '',
+  socialCaseFamilyFName: '',
+  socialCaseFamilyLName: '',
+  socialCaseFamilyLastKnownLocation: '',
+  socialCaseFamilyNotes: ''
 
-
-//Make API call in app.js, pass down here as props
-// const [caseInfo, setCaseInfo] = useState([]);
-// useEffect (() => {
-//   axios
-//   .get("")
-//   .then(response => setCaseInfo(response.data))
-//   .catch(err => console.log(err.response));
-
-// }, []);
+};
 
 
 
-// Route in app.js
-//   <Route
-//         path="/update-case/:id"
-//         render={props => {
-//           return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />
-//         }}
-//       />
 
 
 
 const UpdateForm = props => {
-    console.log(props, 'props in update')
-    const [info, setInfo] = useState(initialCase);
+  // console.log(props, 'props in update')
+  const [info, setInfo] = useState(initialInfo);
 
 
-    useEffect(() => {
-        const caseToEdit = props.caseInfo.find(
-            data => `${data.id}` === props.match.params.id
-        );
-        if (caseToEdit) setInfo(caseToEdit);
-    }, [props.caseInfo, props.match.params.id])
+  useEffect(() => {
+    const caseToEdit = props.caseInfo.find(
+      data => `${data.id}` === props.match.params.id
+    );
+    if (caseToEdit) setInfo(caseToEdit);
+  }, [props.caseInfo, props.match.params.id])
 
-    const changeHandler = event => {
-        event.persist();
-        setInfo({
-            ...info,
-            [event.target.name]: event.target.value
+  const handleChange = event => {
+    event.persist();
+    setInfo({
+      ...info,
+      [event.target.name]: event.target.value
 
-        })
-    }
+    })
+  }
 
-    const handleSubmit = event => {
-        event.preventDefault();
+  const handleLogin = event => {
+    event.preventDefault();
 
-        axios
-            .put(`${movie.id}`, info)
-            .then(response => {
-                props.setCaseInfo([...props.caseInfo, response.data])
-                props.history.push('/')
-            })
-            .catch(err => console.log(err))
+    axiosWithAuth()
+      .put(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCase/${props.match.params.id}`, info)
+      .then(response => console.log(response))
+      // .then(response => {
+      //     props.setCaseInfo([...props.caseInfo, response.data])
+      //     // props.history.push('/')
+      // })
+      .catch(err => console.log(err))
 
 
-    }
+  }
 
-    return (
-        <form className="login-form" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="name"
-                onChange={changeHandler}
-                placeholder="Name"
-                value={info.name}
-            />
-            <input
-                type="text"
-                name="hometown"
-                onChange={changeHandler}
-                placeholder="Hometown"
-                value={info.hometown}
-            />
-            <input
-                type="text"
-                name="current_city"
-                onChange={changeHandler}
-                placeholder="Current city"
-                value={info.current_city}
-            />
-            <input
-                type="text"
-                name="current_state"
-                onChange={changeHandler}
-                placeholder="Current State"
-                value={info.current_state}
-            />
-            <input
-                type="text"
-                name="contact"
-                onChange={changeHandler}
-                placeholder="Contact"
-                value={info.contact}
-            />
-            <button type='submit'>Edit</button>
+  return (
 
-        </form>
-    )
+
+
+
+
+    <>
+      <form className="signup-form" onSubmit={handleLogin}>
+        <h1>Update</h1>
+        <input
+          type="text"
+          name="socialCaseFname"
+          value={info.socialCaseFname}
+          onChange={handleChange}
+          placeholder="First Name"
+        />
+        <input
+          type="text"
+          name="socialCaseLname"
+          value={info.socialCaseLname}
+          onChange={handleChange}
+          placeholder="Last Name"
+        />
+        <input
+          type="text"
+          name="socialCaseAge"
+          value={info.socialCaseAge}
+          onChange={handleChange}
+          placeholder="Age"
+        />
+        <input
+          type="text"
+          name="socialCaseHometown"
+          value={info.socialCaseHometown}
+          onChange={handleChange}
+          placeholder="Hometown"
+        />
+        <input
+          type="text"
+          name="socialCaseCurrentTown"
+          value={info.socialCaseCurrentTown}
+          onChange={handleChange}
+          placeholder="Current Town"
+        />
+        <input
+          type="text"
+          name="socialCaseContactInfo"
+          value={info.socialCaseContactInfo}
+          onChange={handleChange}
+          placeholder="Contact"
+        />
+        <input
+          type="text"
+          name="socialCaseFamilyRelationship"
+          value={info.socialCaseFamilyRelationship}
+          onChange={handleChange}
+          placeholder="Relationship"
+        />
+        <input
+          type="text"
+          name="socialCaseFamilyFName"
+          value={info.socialCaseFamilyFName}
+          onChange={handleChange}
+          placeholder="Family first name"
+        />
+        <input
+          type="text"
+          name="socialCaseFamilyLName"
+          value={info.socialCaseFamilyLName}
+          onChange={handleChange}
+          placeholder="Family last name"
+        />
+        <input
+          type="text"
+          name="socialCaseFamilyLastKnownLocation"
+          value={info.socialCaseFamilyLastKnownLocation}
+          onChange={handleChange}
+          placeholder="Last known location"
+        />
+        <input
+          type="text"
+          name="socialCaseFamilyNotes"
+          value={info.socialCaseFamilyNotes}
+          onChange={handleChange}
+          placeholder="Notes"
+        />
+
+
+
+        <button>Edit</button>
+
+
+      </form>
+    </>
+  )
 }
 
 export default UpdateForm;

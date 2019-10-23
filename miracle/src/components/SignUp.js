@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 
 const SignUp = (props) => {
-
+console.log (props,"in signup")
   // {
   //     "password": "string",
   //     "primaryemail": "string",
@@ -31,12 +31,12 @@ const SignUp = (props) => {
 
     axios
       .post('https://lindseyacason-miraclemessages.herokuapp.com/createnewuser', signUp)
-      .then(response => console.log(response.data, "sign up"))
+      .then(response => { console.log(response.data, "sign up")
 
     //  .then(response => {
     //     localStorage.setItem('token', response.data.payload);
         props.history.push('/login')
-    // })
+    })
     .catch(err => console.log(err.response));
 
 
