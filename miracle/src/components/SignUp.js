@@ -1,6 +1,39 @@
 import React, { useState } from "react";
 import axios from 'axios'
 
+import styled from 'styled-components';
+
+const Form = styled.form`
+  margin: 5% auto;
+  width: 15%;
+  /* border: 2px solid grey; */
+  border-radius: 5px;
+  /* font-size: 1.2rem; */
+  background:#e5e5e5;
+  box-shadow: 5px 1px 20px #111;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+
+  h1 {
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+  }
+
+  input {
+      margin: .5rem auto;
+      width: 100%;
+      height: 2.5rem;
+  }
+
+  button {
+      margin-top: 1rem;
+      width: 100%;
+      height: 3rem;
+  }
+`
+
 const SignUp = (props) => {
   // console.log (props,"in signup")
   // {
@@ -45,35 +78,33 @@ const SignUp = (props) => {
   }
 
   return (
-    <>
-      <form className="signup-form" onSubmit={handleLogin}>
-        <h1>Sign up</h1>
-        <input
-          type="text"
-          name="username"
-          value={signUp.username}
-          onChange={handleChange}
-          placeholder="Username"
-        />
-        <input
-          type="password"
-          name="password"
-          value={signUp.password}
-          onChange={handleChange}
-          placeholder="Password"
-        />
-        <input
-          type="text"
-          name="primaryemail"
-          value={signUp.primaryemail}
-          onChange={handleChange}
-          placeholder="Primary Email"
-        />
-        <button>Sign up</button>
+    <Form className="signup-form" onSubmit={handleLogin}>
+      <h1>Sign up</h1>
+      <input
+        type="text"
+        name="username"
+        value={signUp.username}
+        onChange={handleChange}
+        placeholder="Username"
+      />
+      <input
+        type="password"
+        name="password"
+        value={signUp.password}
+        onChange={handleChange}
+        placeholder="Password"
+      />
+      <input
+        type="text"
+        name="primaryemail"
+        value={signUp.primaryemail}
+        onChange={handleChange}
+        placeholder="Primary Email"
+      />
+      <button>Sign up</button>
 
 
-      </form>
-    </>
+    </Form>
   );
 };
 
