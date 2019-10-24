@@ -99,7 +99,7 @@ const UpdateForm = props => {
       // .then(response => console.log(response))
       .then(response => {
           props.setCaseInfo([...props.caseInfo, response.data])
-          props.history.push('/viewallcases')
+          props.history.push('/dashboard/viewallcases')
       })
       .catch(err => console.log(err))
 
@@ -116,7 +116,7 @@ const UpdateForm = props => {
     <FormContainer>
     <FormHeader>Edit Form</FormHeader>
 
-      <Form className="signup-form" onSubmit={e => { props.history.push('/viewallcases'); handleLogin(e) }}>
+      <Form className="signup-form" onSubmit={e => { props.history.push('/dashboard/viewallcases'); handleLogin(e) }}>
        
         <input
           type="text"

@@ -34,7 +34,7 @@ function App(props) {
   return (
     <div className="App">
 
-      <Route path="/" component={Nav} />
+      {/* <Route path="/" component={Nav} /> */}
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route exact path="/" component={PublicCases} />
@@ -49,7 +49,7 @@ function App(props) {
       />
 
       <PrivateRoute
-        path="/volunteer/case"
+        path="/dashboard/volunteer/case"
         render={props => {
           return <VolunteerCase {...props} />;
         }} component={VolunteerCase}
@@ -58,24 +58,24 @@ function App(props) {
      
 
       <Route
-        path="/volunteer/edit/:id"
+        path="/dashboard/volunteer/edit/:id"
         render={props => {
           return <UpdateForm {...props}  caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
         }}
       />
 
-      <PrivateRoute
-        exact path="/viewallcases"
+      {/* <PrivateRoute
+        exact path="/dashboard/viewallcases"
         render={props => {
           return <ViewCases {...props} />;
         }} component={ViewCases}
       />
       <PrivateRoute
-        exact path="/add/case"
+        exact path="/dashboard/add/case"
         render={props => {
           return <VolunteerAddCase {...props}  />;
         }} component={VolunteerAddCase}
-      />
+      /> */}
 
       <Footer />
     </div >
