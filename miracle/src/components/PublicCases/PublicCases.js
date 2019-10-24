@@ -42,6 +42,8 @@ const PublicCases = props => {
         <h1>Miracle Messages</h1>
         <Link to="/">View Public Cases</Link>
         <Link to="/newcase">Add Missing Person</Link>
+        <Link to="/signup">Sign up</Link>
+        <Link to="/login">Volunteer Login</Link>
       </CaseNav>
 
       <CaseContainer>

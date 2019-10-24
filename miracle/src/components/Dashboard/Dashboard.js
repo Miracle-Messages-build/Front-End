@@ -1,53 +1,68 @@
-// import React from 'react';
-// import { Route, Link } from 'react-router-dom';
-// import styled from 'styled-components';
+import React from 'react';
+import { Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-// import ViewCases from './ViewCases';
-// import VolunteerAddCase from './VolunteerAddCase';
-// import PrivateRoute from '../PrivateRoute'
+import ViewCases from './ViewCases';
+import VolunteerAddCase from './VolunteerAddCase';
+import PrivateRoute from '../PrivateRoute'
 
-// const DashHeader = styled.header`
-//   width: 80%;
-//   margin: 0 auto;
-//   text-align: center;
-// `;
+const DashHeader = styled.header`
+max-width: 900px;
+width: 100%;
+margin: 0 auto;
+text-align: center;
+background-color: cornflowerblue;
+padding: 1% 0;
+border-radius: 15px;
 
-// const CaseContainer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-// `;
+h1 {
+  color: black;
+  font-size: 3rem;
+  margin-bottom: 1%;
+}
 
-// const Dashboard = props => {
-//   const handleLogout = () => {
-//     localStorage.removeItem('token');
-//     window.location.reload();
-//   };
-//   return (
-//     <div>
-//       <DashHeader>
-//         <h1>Dashboard</h1>
-//         <nav>
-//           <Link to="/dashboard"><button>Dashboard</button></Link>
-//           <Link to="/dashboard/viewallcases"><button>View All Cases</button></Link>
-//           <Link to="/dashboard/add/case"><button>Add Case</button></Link>
-//           <button onClick={handleLogout}>Logout</button>
+a {
+  text-decoration: none;
+  margin: 1%;    
+  color: #23293B;
+}
+`;
+const CaseContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
-//         </nav>
-//       </DashHeader>
-//       <CaseContainer>
-//         {props.location.pathname === "/dashboard" ? <ViewCases /> : null}
-//         <Route path="/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} />
-//         <PrivateRoute
-//           exact path="/add/case"
-//           render={props => {
-//             return <VolunteerAddCase {...props} addCase={props.addcase} />;
-//           }} component={VolunteerAddCase}
-//         />
-//       </CaseContainer>
-//     </div>
-//   );
-// }
+const Dashboard = props => {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    props.history.push('/')
+  };
+  return (
+    <div>
+      <DashHeader>
+        <h1>Dashboard</h1>
+        <nav>
+          <Link to="/dashboard"><button>Dashboard</button></Link>
+          <Link to="/dashboard/viewallcases"><button>View All Cases</button></Link>
+          <Link to="/dashboard/add/case"><button>Add Case</button></Link>
+          <button onClick={handleLogout}>Logout</button>
 
-// export default Dashboard;
+        </nav>
+      </DashHeader>
+      <CaseContainer>
+        {props.location.pathname === "/dashboard" ? <ViewCases /> : null}
+        <Route path="/dashboard/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} /> 
+         <PrivateRoute
+          exact path="/dashboard/add/case"
+          render={props => {
+            return <VolunteerAddCase {...props} addCase={props.addcase} />;
+          }} component={VolunteerAddCase} 
+         />
+      </CaseContainer>
+    </div>
+  );
+}
+
+export default Dashboard;

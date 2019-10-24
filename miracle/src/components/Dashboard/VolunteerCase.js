@@ -77,7 +77,7 @@ const VolunteerCase = props => {
         <p>{props.extraDetails}</p>
       </CaseBody>
       <CaseButtons>
-        <Link to={`/volunteer/edit/${props.id}`}>
+        <Link to={`/dashboard/volunteer/edit/${props.id}`}>
           <button >Edit Case</button>
         </Link>
         <button onClick={() => props.deleteCase(props.id)}>Delete Case</button>
