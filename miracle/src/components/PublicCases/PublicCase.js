@@ -49,6 +49,7 @@ const PublicCase = props => {
           <li>{props.name}, Age {props.age}</li>
           <li>Last Known Location: {props.lastKnownLoc}</li>
           <li>Contact: {props.contact}</li>
+          <li>Notes: {props.extraDetails}</li>
         </ul>
       </CaseBody>
     </CaseContainer>
