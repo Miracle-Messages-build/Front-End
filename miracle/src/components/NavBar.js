@@ -75,8 +75,13 @@ export default class Nav extends React.Component {
     super(props);
   }
 
+
+
   render() {
-   
+    const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  };
 
     return (
       <div>
@@ -87,6 +92,10 @@ export default class Nav extends React.Component {
           <StyledNavLink exact to="/public" activeClassName="activeNavButton">
             Home
         </StyledNavLink>
+          <StyledNavLink to="/viewallcases"><button>View All Cases</button></StyledNavLink>
+          <StyledNavLink to="/add/case"><button>Add Case</button></StyledNavLink>
+          <button onClick={handleLogout}>Logout</button>
+
           <StyledNavLink to="/signup" activeClassName="activeNavButton">
             Signup
         </StyledNavLink>

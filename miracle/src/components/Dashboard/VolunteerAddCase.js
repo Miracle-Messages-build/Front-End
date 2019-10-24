@@ -168,7 +168,7 @@ const VolunteerAddCase = (props) => {
           </FormSection>
         </FormMain>
         {/* <button type="submit">Add New Case</button> */}
-        <button onClick={e => { props.history.push('/dashboard'); handleSubmit(e); }}>Add</button>
+        <button onClick={e => { props.history.push('/public'); handleSubmit(e); }}>Add</button>
       </Form>
     </FormContainer>
   )

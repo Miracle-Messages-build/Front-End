@@ -66,12 +66,12 @@ function App(props) {
         }} component={VolunteerCase}
       />
 
-      <PrivateRoute
+      {/* <PrivateRoute
         path="/volunteer/cases"
         render={props => {
           return <VolunteerCases {...props} />;
         }} component={VolunteerCases}
-      />
+      /> */}
 
       <Route
         path="/volunteer/edit/:id"
@@ -79,6 +79,20 @@ function App(props) {
           return <UpdateForm {...props} editCase={props.editCase} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
         }}
       />
+             {/* <Route path="/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} /> */}
+
+             <PrivateRoute
+          exact path="/viewallcases"
+          render={props => {
+            return <ViewCases {...props} />;
+          }} component={ViewCases}
+        />
+        <PrivateRoute
+          exact path="/add/case"
+          render={props => {
+            return <VolunteerAddCase {...props} addCase={props.addcase} />;
+          }} component={VolunteerAddCase}
+        />
 
       {/* <Route
         path="/volunteer/edit/:id"
