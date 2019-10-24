@@ -73,9 +73,10 @@ const AddCase = props => {
   }
 
   return (
+    <div className="vol-add-parent">
     <FormContainer>
       <FormHeader>Add Lost Family Member</FormHeader>
-      <Form onSubmit={e => { props.history.push('/public'); submitForm(e); }}>
+      <Form onSubmit={e => { props.history.push('/'); submitForm(e); }}>
         <label htmlFor="socialCaseFname">
           First Name
           <input type="text" name="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
@@ -103,6 +104,7 @@ const AddCase = props => {
         <button type="submit">Create Post</button>
       </Form>
     </FormContainer>
+    </div>
   );
 }
 

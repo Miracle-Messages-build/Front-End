@@ -94,16 +94,7 @@ const VolunteerAddCase = (props) => {
     props.addCase(inputs);
   }
 
-  // const submitForm = event => {
-  //   event.preventDefault()
 
-
-  //   axiosWithAuth()
-  //     .post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
-  //     .then(response => console.log('POST Response:', response))
-
-  //     .catch((error) => console.log(error))
-  // }
 
   return (
     <div className= "vol-add-parent">

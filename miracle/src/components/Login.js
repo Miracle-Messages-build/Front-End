@@ -61,7 +61,7 @@ const Login = (props) => {
             // .then(response => console.log(response, "login"))
             .then(response => {
                 localStorage.setItem('token', response.data.access_token);
-                props.history.push('/public')
+                props.history.push('/')
 
             })
             .catch(err => console.log(err.response));

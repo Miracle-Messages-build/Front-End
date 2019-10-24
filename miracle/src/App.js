@@ -14,6 +14,7 @@ import VolunteerCase from './components/Dashboard/VolunteerCase.js'
 import AddCase from './components/PublicCases/AddPublicCase.js'
 import ViewCases from './components/Dashboard/ViewCases.js'
 import Nav from './components/NavBar.js'
+import Footer from './components/Footer.js'
 
 import { fetchCase, editCase, addCase } from './actions/index.js'
 import { connect } from 'react-redux';
@@ -34,13 +35,14 @@ function App(props) {
 
   return (
     <div className="App">
+      
         <Route  path="/" component={Nav}/>
     
 
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/public" component={PublicCases} />
-
+      <Route exact path="/" component={PublicCases} />
+      <Route exact path="/newcase" component={AddCase} />      
       {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
 
       {/* <PrivateRoute
@@ -99,6 +101,7 @@ function App(props) {
           return <UpdateForm {...props} caseInfo={caseInfo} setCaseInfo={setCaseInfo} />;
         }}
       /> */}
+      <Footer/>
     </div >
   );
 }

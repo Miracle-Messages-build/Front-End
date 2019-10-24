@@ -11,22 +11,13 @@ const StyledNav = styled.div`
   font-size: 2rem;
   width: 100%;
   background-color: lightsteelblue;
+  border:1.2px solid whitesmoke;
     
   font-family: "Roboto Condensed", serif;
   span {
     font-weight: bold;
   }
-  .logo {
-    flex-grow: 2;
-    justify-content: flex-start;
-    text-align: left;
-    padding-left: 20px;
-    color: #fffc88;
-    margin-left: 40px;
-    cursor: pointer;
-    span{
-      color:#f6f2ef;
-    }
+
   }
   @media screen and (max-width: 500px) {
     display: flex;
@@ -48,8 +39,13 @@ const StyledNavLink = styled(NavLink)`
   padding: 24px;
   color: #f6f2ef;
   font-family: "Roboto Condensed", serif;
-  font-size: 1.5rem;
+  font-size: 1.8 rem;
   margin-right: 40px;
+  :hover {
+    
+    border: 0.1em solid whitesmoke;
+  
+  }
 `;
 
 
@@ -60,14 +56,14 @@ const StyledLoginNavLink = styled(NavLink)`
   padding: 8px 16px;
 //   border: 0.1em solid #22283a;
   border-radius: 4px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-right: 20px;
   background-color: lightsteelblue;
 
   :hover {
-    // background-color: #2da562;
-    // border: 0.1em solid #2da562;
-    // color: #fff !important;
+    
+    border: 0.1em solid whitesmoke;
+  
   }
 `;
 
@@ -88,14 +84,14 @@ export default class Nav extends React.Component {
     return (
       <div>
         <StyledNav>
-          <div onClick={() => this.props.history.push("/public")} className="logo">
+          <div onClick={() => this.props.history.push("/")} className="logo">
          
           </div>
-          <StyledNavLink exact to="/public" activeClassName="activeNavButton">
+          <StyledNavLink exact to="/" activeClassName="activeNavButton">
             Home
         </StyledNavLink>
-          <StyledNavLink to="/viewallcases">View all Cases</StyledNavLink>
-          <StyledNavLink to="/add/case">Add a new case</StyledNavLink>
+          <StyledNavLink to="/viewallcases">View All Cases</StyledNavLink>
+          <StyledNavLink to="/add/case">Add A New case</StyledNavLink>
 
           <StyledNavLink to="/signup" activeClassName="activeNavButton">
             Signup

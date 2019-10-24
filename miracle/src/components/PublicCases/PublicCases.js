@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ViewPublicCases from './ViewPublicCases';
-import AddPublicCase from './AddPublicCase';
+import AddCase from './AddPublicCase.js'
 
 const CaseNav = styled.nav`
   max-width: 900px;
@@ -40,13 +40,13 @@ const PublicCases = props => {
     <>
       <CaseNav>
         <h1>Miracle Messages</h1>
-        <Link to="/public">View Public Cases</Link>
-        <Link to="/public/addcase">Add Missing Person</Link>
+        <Link to="/">View Public Cases</Link>
+        <Link to="/newcase">Add Missing Person</Link>
       </CaseNav>
 
       <CaseContainer>
-        {props.location.pathname === "/public" ? <ViewPublicCases /> : null}
-        <Route path="/public/addcase" component={AddPublicCase} />
+        {props.location.pathname === "/" ? <ViewPublicCases /> : null}
+        <Route exact path="/newcase" component={AddCase} />
       </CaseContainer>
     </>
   );
