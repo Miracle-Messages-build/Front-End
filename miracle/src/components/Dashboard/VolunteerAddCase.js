@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'
-import { axiosWithAuth } from '../../utils/axiosWithAuth.js'
+// import axios from 'axios'
+// import { axiosWithAuth } from '../../utils/axiosWithAuth.js'
 
 import { fetchCase, editCase, addCase } from '../../actions/index.js'
 import { connect } from 'react-redux';
@@ -97,73 +97,73 @@ const VolunteerAddCase = (props) => {
 
 
   return (
-    <div className= "vol-add-parent">
-    <FormContainer>
-      <FormHeader>Add a case</FormHeader>
-      <Form >
-        <FormMain>
+    <div className="vol-add-parent">
+      <FormContainer>
+        <FormHeader>Add a case</FormHeader>
+        <Form >
+          <FormMain>
 
-          <FormSection>
-            <label htmlFor="socialCaseFname">
-              Homeless Person's Name
+            <FormSection>
+              <label htmlFor="socialCaseFname">
+                Homeless Person's Name
             <input type="text" name="socialCaseFname" id="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
-            </label>
-            <label htmlFor="socialCaseLname">
-              Last Name
+              </label>
+              <label htmlFor="socialCaseLname">
+                Last Name
             <input type="text" name="socialCaseLname" id="socialCaseLname" value={inputs.socialCaseLname} onChange={handleChange} placeholder="Last Name" required />
-            </label>
-            <label htmlFor="socialCaseAge">
-              Age
+              </label>
+              <label htmlFor="socialCaseAge">
+                Age
             <input type="text" name="socialCaseAge" id="socialCaseAge" value={inputs.socialCaseAge} onChange={handleChange} placeholder="Age" required />
-            </label>
-            <label htmlFor="socialCaseHometown">
-              Home Town
+              </label>
+              <label htmlFor="socialCaseHometown">
+                Home Town
             <input type="text" name="socialCaseHometown" id="socialCaseHometown" value={inputs.socialCaseHometown} onChange={handleChange} placeholder="City" required />
-            </label>
-            <label htmlFor="socialCaseCurrentTown">
-              Current City
+              </label>
+              <label htmlFor="socialCaseCurrentTown">
+                Current City
             <input type="text" name="socialCaseCurrentTown" id="socialCaseCurrentTown" value={inputs.socialCaseCurrentTown} onChange={handleChange} placeholder="City" required />
-            </label>
-            <label htmlFor="socialCaseContactInfo">
-              Contact Info
+              </label>
+              <label htmlFor="socialCaseContactInfo">
+                Contact Info
             <input type="text" name="socialCaseContactInfo" id="socialCaseContactInfo" value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
-            </label>
-            <label htmlFor="socialCaseIsSensitive">
-              Is Case Sensitive?
+              </label>
+              <label htmlFor="socialCaseIsSensitive">
+                Is Case Sensitive?
               <input type="checkbox" name="socialCaseIsSensitive" id="socialCaseIsSensitive" checked={inputs.socialCaseIsSensitive} onChange={handleChange} />
-            </label>
-          </FormSection>
-          <FormSection>
-            <label htmlFor="socialCaseFamilyFName">
-              Friend or Family Member's Name
+              </label>
+            </FormSection>
+            <FormSection>
+              <label htmlFor="socialCaseFamilyFName">
+                Friend or Family Member's Name
             <input type="text" name="socialCaseFamilyFName" id="socialCaseFamilyFName" value={inputs.socialCaseFamilyFName} onChange={handleChange} placeholder="First Name" required />
-            </label>
-            <label htmlFor="socialCaseFamilyLName">
-              Last Name
+              </label>
+              <label htmlFor="socialCaseFamilyLName">
+                Last Name
             <input type="text" name="socialCaseFamilyLName" id="socialCaseFamilyLName" value={inputs.socialCaseFamilyLName} onChange={handleChange} placeholder="Last Name" required />
-            </label>
-            <label htmlFor="socialCaseFamilyAge">
-              Age
+              </label>
+              <label htmlFor="socialCaseFamilyAge">
+                Age
             <input type="text" name="socialCaseFamilyAge" id="socialCaseFamilyAge" value={inputs.socialCaseFamilyAge} onChange={handleChange} placeholder="Age" required />
-            </label>
-            <label htmlFor="socialCaseFamilyRelationship">
-              Relationship
+              </label>
+              <label htmlFor="socialCaseFamilyRelationship">
+                Relationship
             <input type="text" name="socialCaseFamilyRelationship" id="socialCaseFamilyRelationship" value={inputs.socialCaseFamilyRelationship} onChange={handleChange} placeholder="Relative" required />
-            </label>
-            <label htmlFor="socialCaseFamilyLastKnownLocation">
-              Last Known Location
+              </label>
+              <label htmlFor="socialCaseFamilyLastKnownLocation">
+                Last Known Location
             <input type="text" name="socialCaseFamilyLastKnownLocation" id="socialCaseFamilyLastKnownLocation" value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City" required />
-            </label>
-            <label htmlFor="socialCaseNotes">
-              Extra Details
+              </label>
+              <label htmlFor="socialCaseNotes">
+                Extra Details
           <textarea name="socialCaseNotes" id="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" required />
-            </label>
-          </FormSection>
-        </FormMain>
-        {/* <button type="submit">Add New Case</button> */}
-        <button onClick={e => { props.history.push('/dashboard/viewallcases'); handleSubmit(e); }}>Add</button>
-      </Form>
-    </FormContainer>
+              </label>
+            </FormSection>
+          </FormMain>
+          {/* <button type="submit">Add New Case</button> */}
+          <button onClick={e => { props.history.push('/dashboard/viewallcases'); handleSubmit(e); }}>Add</button>
+        </Form>
+      </FormContainer>
     </div>
   )
 }

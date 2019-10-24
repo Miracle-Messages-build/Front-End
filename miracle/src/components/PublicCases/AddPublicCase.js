@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
+
+import { MiracleNav } from '../MiracleNav';
 
 const FormContainer = styled.div`
   margin-top: 5%;
@@ -73,38 +76,48 @@ const AddCase = props => {
   }
 
   return (
-    <div className="vol-add-parent">
-    <FormContainer>
-      <FormHeader>Add Lost Family Member</FormHeader>
-      <Form onSubmit={e => { props.history.push('/'); submitForm(e); }}>
-        <label htmlFor="socialCaseFname">
-          First Name
+    <>
+      <MiracleNav>
+        <h1>Miracle Messages</h1>
+        <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
+        <Link to="/">View Public Cases</Link>
+        <Link to="/newcase">Add Missing Person</Link>
+        <Link to="/signup">Sign up</Link>
+        <Link to="/login">Volunteer Login</Link>
+      </MiracleNav>
+      <div className="vol-add-parent">
+        <FormContainer>
+          <FormHeader>Add Lost Family Member</FormHeader>
+          <Form onSubmit={e => { props.history.push('/'); submitForm(e); }}>
+            <label htmlFor="socialCaseFname">
+              First Name
           <input type="text" name="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
-        </label>
-        <label htmlFor="socialCaseLname">
-          Last Name
+            </label>
+            <label htmlFor="socialCaseLname">
+              Last Name
           <input type="text" name="socialCaseLname" value={inputs.socialCaseLname} onChange={handleChange} placeholder="Last Name" required />
-        </label>
-        <label htmlFor="socialCaseAge">
-          Age
+            </label>
+            <label htmlFor="socialCaseAge">
+              Age
           <input type="number" name="socialCaseAge" value={inputs.socialCaseAge} onChange={handleChange} min="16" max="100" placeholder="Age" required />
-        </label>
-        <label htmlFor="socialCaseFamilyLastKnownLocation">
-          Last Known Location
+            </label>
+            <label htmlFor="socialCaseFamilyLastKnownLocation">
+              Last Known Location
           <input type="text" name="socialCaseFamilyLastKnownLocation" value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City, State" required />
-        </label>
-        <label htmlFor="socialCaseContactInfo">
-          Contact Info
+            </label>
+            <label htmlFor="socialCaseContactInfo">
+              Contact Info
           <input type="text" name="socialCaseContactInfo" value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
-        </label>
-        <label htmlFor="socialCaseNotes">
-          Extra Details
+            </label>
+            <label htmlFor="socialCaseNotes">
+              Extra Details
           <textarea name="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" required />
-        </label>
-        <button type="submit">Create Post</button>
-      </Form>
-    </FormContainer>
-    </div>
+            </label>
+            <button type="submit">Create Post</button>
+          </Form>
+        </FormContainer>
+      </div>
+    </>
   );
 }
 
