@@ -9,6 +9,14 @@ const FormContainer = styled.div`
   margin-top: 5%;
   width: 20%;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
+
+  @media (max-width: 800px){
+    width: 60%;
+  }
+
+  @media (max-width: 578px){
+    width: 90%
+  }
 `;
 
 const FormHeader = styled.h1`
@@ -69,8 +77,12 @@ const AddCase = props => {
   const submitForm = e => {
     e.preventDefault();
     axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
+      // .then(response => {
+      //   // console.log('POST Response:', response)
+      // })
       .then(response => {
-        // console.log('POST Response:', response)
+        setInputs(response.data)
+        window.location.reload();
       })
       .catch(err => console.log('POST Error:', err));
   }

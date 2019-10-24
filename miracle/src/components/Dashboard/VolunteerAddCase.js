@@ -11,7 +11,7 @@ const FormContainer = styled.div`
   width: 50%;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
 
-  @media (max-width: 768px){
+  @media (max-width: 800px){
     width: 95%;
   }
 `;
@@ -55,6 +55,10 @@ const Form = styled.form`
 
 const FormMain = styled.div`
   display: flex;
+
+  @media (max-width: 578px){
+    flex-direction: column;
+  }
 `;
 
 const FormSection = styled.div`
@@ -62,8 +66,17 @@ const FormSection = styled.div`
   padding: 1%;
   border-bottom: 1px solid black;
 
+ 
+  @media (max-width: 578px){
+    width: 100%;
+  }
+
   :first-child{
     border-right: 1px solid black;
+
+    @media (max-width: 578px){
+      border-right: none;
+    }
   }
 `;
 
