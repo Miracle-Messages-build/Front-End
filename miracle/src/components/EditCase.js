@@ -71,7 +71,7 @@ const initialInfo = {
 
 
 const UpdateForm = props => {
-  // console.log(props, 'props in update')
+  console.log(props, 'props in update')
   const [info, setInfo] = useState(initialInfo);
 
 
@@ -99,6 +99,7 @@ const UpdateForm = props => {
       // .then(response => console.log(response))
       .then(response => {
         props.setCaseInfo([...props.caseInfo, response.data])
+        window.location.reload();
         props.history.push('/dashboard/viewallcases')
       })
       .catch(err => console.log(err))
