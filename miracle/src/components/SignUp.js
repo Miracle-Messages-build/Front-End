@@ -70,7 +70,7 @@ const SignUp = (props) => {
       //   console.log(response.data, "sign up")
 
       .then(response => {
-        localStorage.setItem('token', response.data.payload);
+        // localStorage.setItem('token', response.data.payload);
         props.history.push('/login')
       })
       .catch(err => console.log(err.response));
