@@ -6,11 +6,7 @@ import ViewCases from './ViewCases';
 import VolunteerAddCase from './VolunteerAddCase';
 import PrivateRoute from '../PrivateRoute'
 
-const DashHeader = styled.header`
-  width: 80%;
-  margin: 0 auto;
-  text-align: center;
-`;
+import { MiracleNav } from '../MiracleNav';
 
 const CaseContainer = styled.div`
   width: 100%;
@@ -22,20 +18,19 @@ const CaseContainer = styled.div`
 const Dashboard = props => {
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.reload();
+    props.history.push('/')
   };
   return (
     <div>
-      <DashHeader>
-        <h1>Dashboard</h1>
-        <nav>
-          <Link to="/dashboard"><button>Dashboard</button></Link>
-          <Link to="/dashboard/viewallcases"><button>View All Cases</button></Link>
-          <Link to="/dashboard/add/case"><button>Add Case</button></Link>
-          <button onClick={handleLogout}>Logout</button>
-
-        </nav>
-      </DashHeader>
+      <MiracleNav>
+        <h1>Miracle Messages</h1>
+        <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard/add/case">Add Case</Link>
+        <Link to="/dashboard/viewallcases">View All Cases</Link>
+        <Link to="/">View Public Cases</Link>
+        <button onClick={handleLogout}>Logout</button>
+      </MiracleNav>
       <CaseContainer>
         {props.location.pathname === "/dashboard" ? <ViewCases /> : null}
         <Route path="/dashboard/viewallcases" render={routeProps => <ViewCases {...routeProps} viewAllCases />} />

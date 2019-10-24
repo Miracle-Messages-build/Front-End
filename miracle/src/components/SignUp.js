@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios'
 
+import { Link } from 'react-router-dom';
+import { MiracleNav } from './MiracleNav';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -64,11 +66,11 @@ const SignUp = (props) => {
 
     axios
       .post('https://lindseyacason-miraclemessages.herokuapp.com/createnewuser', signUp)
-      .then(response => {
-        console.log(response.data, "sign up")
+      // .then(response => {
+      //   console.log(response.data, "sign up")
 
-        //  .then(response => {
-        //     localStorage.setItem('token', response.data.payload);
+      .then(response => {
+        localStorage.setItem('token', response.data.payload);
         props.history.push('/login')
       })
       .catch(err => console.log(err.response));
@@ -78,33 +80,41 @@ const SignUp = (props) => {
   }
 
   return (
-    <Form className="signup-form" onSubmit={handleLogin}>
-      <h1>Sign up</h1>
-      <input
-        type="text"
-        name="username"
-        value={signUp.username}
-        onChange={handleChange}
-        placeholder="Username"
-      />
-      <input
-        type="password"
-        name="password"
-        value={signUp.password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      <input
-        type="text"
-        name="primaryemail"
-        value={signUp.primaryemail}
-        onChange={handleChange}
-        placeholder="Primary Email"
-      />
-      <button>Sign up</button>
+    <>
+      <MiracleNav>
+        <h1>Miracle Messages</h1>
+        <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
+        <Link to="/">View Public Cases</Link>
+        <Link to="/login">Volunteer Login</Link>
+      </MiracleNav>
+      <Form className="signup-form" onSubmit={handleLogin}>
+        <h1>Sign up</h1>
+        <input
+          type="text"
+          name="username"
+          value={signUp.username}
+          onChange={handleChange}
+          placeholder="Username"
+        />
+        <input
+          type="password"
+          name="password"
+          value={signUp.password}
+          onChange={handleChange}
+          placeholder="Password"
+        />
+        <input
+          type="text"
+          name="primaryemail"
+          value={signUp.primaryemail}
+          onChange={handleChange}
+          placeholder="Primary Email"
+        />
+        <button>Sign up</button>
 
 
-    </Form>
+      </Form>
+    </>
   );
 };
 

@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import VolunteerCase from './VolunteerCase';
+
+
+
+const CaseContainer = styled.div`
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+`;
 
 const ViewCases = props => {
   const [socialCases, setSocialCases] = useState(null);
@@ -24,19 +35,12 @@ const ViewCases = props => {
     }
   }, [props.viewAllCases])
 
-  //Requires authentication! @Taylor
-  // const deleteCase = id => {
-  //   axiosWithAuth()
-  //     .delete(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/${id}`)
-  //     .then(() => {
-  //       //We also want to remove the now deleted card from our state
-  //       setSocialCases(socialCases.filter(socialCase => socialCase.socialCaseId !== id));
-  //     })
-  //     .catch(err => console.log(err));
-  // }
+
 
   return (
     <>
+          <CaseContainer>
+
       {socialCases ? socialCases.map((socialCase, idx) => (
         <VolunteerCase
           key={idx}
@@ -54,6 +58,8 @@ const ViewCases = props => {
           // deleteCase={deleteCase}
         />
       )) : null}
+            </CaseContainer>
+
     </>
   );
 }

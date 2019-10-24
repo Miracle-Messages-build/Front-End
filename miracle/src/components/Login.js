@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { axiosWithAuthLogin } from '../utils/axiosWithAuth'
 
+import { Link } from 'react-router-dom';
+import { MiracleNav } from './MiracleNav';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -61,7 +63,7 @@ const Login = (props) => {
             // .then(response => console.log(response, "login"))
             .then(response => {
                 localStorage.setItem('token', response.data.access_token);
-                props.history.push('/dashboard')
+                props.history.push('/dashboard/viewallcases')
 
             })
             .catch(err => console.log(err.response));
@@ -72,27 +74,35 @@ const Login = (props) => {
 
 
     return (
-        <Form className="login-form" onSubmit={handleLogin}>
-            <h1>Login</h1>
-            <input
-                type="text"
-                name="username"
-                value={newLogin.username}
-                onChange={handleChange}
-                placeholder="Username"
-            />
-            <input
-                type="password"
-                name="password"
-                value={newLogin.password}
-                onChange={handleChange}
-                placeholder="Password"
-            />
+        <>
+            <MiracleNav>
+                <h1>Miracle Messages</h1>
+                <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
+                <Link to="/">View Public Cases</Link>
+                <Link to="/signup">Sign up</Link>
+            </MiracleNav>
+            <Form className="login-form" onSubmit={handleLogin}>
+                <h1>Login</h1>
+                <input
+                    type="text"
+                    name="username"
+                    value={newLogin.username}
+                    onChange={handleChange}
+                    placeholder="Username"
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={newLogin.password}
+                    onChange={handleChange}
+                    placeholder="Password"
+                />
 
-            <button>Log in</button>
+                <button>Log in</button>
 
 
-        </Form>
+            </Form>
+        </>
     );
 };
 

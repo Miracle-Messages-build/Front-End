@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 import PublicCase from './PublicCase';
 
@@ -8,27 +8,24 @@ import { connect } from 'react-redux';;
 
 
 const ViewPublicCases = (props) => {
-  
+
   useEffect(() => {
     props.fetchCase();
-}, [])
+  }, [])
 
-   
+
   const [publicCases, setPublicCases] = useState(null);
 
   useEffect(() => {
-    // axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
-    //   .then(response => {
-    //     console.log('Get Response', response)
-      
-        
-        setPublicCases(props.cases.filter(socialCase => socialCase.user === null));
-    
+
+
+    setPublicCases(props.cases.filter(socialCase => socialCase.user === null));
+
   }, [props.cases]);
   if (props.loading) {
     return <h1>Loading...</h1>
-}
-  
+  }
+
   return (
     <>
       {publicCases ? publicCases.map((publicCase, idx) => (
