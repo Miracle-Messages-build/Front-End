@@ -9,6 +9,12 @@ export const MiracleNav = styled.nav`
   padding: 1% 0;
   border-radius: 15px;
 
+  @media (max-width: 576px){
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
   h1 {
     color: black;
     font-size: 3rem;
