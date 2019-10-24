@@ -1,0 +1,25 @@
+.logout
+{margin:1.5rem;
+    background-color: #2DA561;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 0.1em solid #22283a;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    border:3px solid  lightsteelblue;
+
+    background-color: lightsteelblue;
+
+     
+}
+
+.edit-parent{
+    display: flex;
+  justify-content: center;
+}
+.vol-add-parent{
+    display: flex;
+  justify-content: center;
+}
+

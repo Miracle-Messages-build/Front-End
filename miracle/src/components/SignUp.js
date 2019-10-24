@@ -64,11 +64,11 @@ const SignUp = (props) => {
 
     axios
       .post('https://lindseyacason-miraclemessages.herokuapp.com/createnewuser', signUp)
-      .then(response => {
-        console.log(response.data, "sign up")
+      // .then(response => {
+      //   console.log(response.data, "sign up")
 
-        //  .then(response => {
-        //     localStorage.setItem('token', response.data.payload);
+         .then(response => {
+            localStorage.setItem('token', response.data.payload);
         props.history.push('/login')
       })
       .catch(err => console.log(err.response));

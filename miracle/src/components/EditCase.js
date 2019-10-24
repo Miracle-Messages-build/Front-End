@@ -1,6 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
+import styled from 'styled-components';
+
+const FormContainer = styled.div`
+  margin-top: 5%;
+  width: 20%;
+  box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
+`;
+
+const FormHeader = styled.h1`
+  font-size: 2.2rem;
+  color: black;
+  padding: 4%;
+  text-align: center;
+  background-color: cornflowerblue;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 2%;
+  background-color: whitesmoke;
+
+  label {
+    width: 100%;
+    margin-top: 1%;
+  }
+
+  input{
+    width: 100%;
+    padding: 2%;
+    margin: 3% auto;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 2%;
+    margin: 3% auto;
+    box-sizing: border-box;
+  }
+  
+  button {
+    width: 100%;
+    height: 30px;
+  }
+`;
 
 
 const initialInfo = {
@@ -49,11 +96,11 @@ const UpdateForm = props => {
 
     axiosWithAuth()
       .put(`https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCase/${props.match.params.id}`, info)
-      .then(response => console.log(response))
-      // .then(response => {
-      //     props.setCaseInfo([...props.caseInfo, response.data])
-      //     // props.history.push('/')
-      // })
+      // .then(response => console.log(response))
+      .then(response => {
+          props.setCaseInfo([...props.caseInfo, response.data])
+          props.history.push('/viewallcases')
+      })
       .catch(err => console.log(err))
 
 
@@ -65,9 +112,12 @@ const UpdateForm = props => {
 
 
 
-    <>
-      <form className="signup-form" onSubmit={e => { props.history.push('/dashboard'); handleLogin(e) }}>
-        <h1>Update</h1>
+<div className="edit-parent">
+    <FormContainer>
+    <FormHeader>Edit Form</FormHeader>
+
+      <Form className="signup-form" onSubmit={e => { props.history.push('/viewallcases'); handleLogin(e) }}>
+       
         <input
           type="text"
           name="socialCaseFname"
@@ -151,8 +201,9 @@ const UpdateForm = props => {
         <button>Edit</button>
 
 
-      </form>
-    </>
+      </Form>
+      </FormContainer>
+      </div>
   )
 }
 
