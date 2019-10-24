@@ -32,7 +32,10 @@ export const addCase = (inputs) => {
 
         axiosWithAuth()
       .post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
-      .then(response => console.log('POST Response:', response))
+      .then((response) => {
+        // console.log(response, 'd r')
+        window.location.reload();
+      })
             // .then(response => dispatch({ type: POST_SUCCESS, payload: response.data }))
             // .catch(error => dispatch({ type: POST_FAILURE, payload: error.response }))
 
