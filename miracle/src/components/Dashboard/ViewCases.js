@@ -55,6 +55,7 @@ const ViewCases = props => {
             relationship={socialCase.socialCaseFamilyRelationship}
             lastKnownLoc={socialCase.socialCaseFamilyLastKnownLocation}
             extraDetails={socialCase.socialCaseNotes}
+            viewingAllCases={props.viewAllCases}
           // deleteCase={deleteCase}
           />
         )) : null}

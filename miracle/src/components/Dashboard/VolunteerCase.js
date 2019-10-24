@@ -104,10 +104,13 @@ const VolunteerCase = props => {
         </ul>
         <p>Notes: {props.extraDetails}</p>
       </CaseBody>
-      <CaseButtons>
-        <Link to={`/dashboard/volunteer/edit/${props.id}`}><span>Edit Case</span></Link>
-        <button onClick={() => props.deleteCase(props.id)}><span>Delete</span></button>
-      </CaseButtons>
+      {props.viewingAllCases ? null :
+        <CaseButtons>
+          <Link to={`/dashboard/volunteer/edit/${props.id}`}><span>Edit Case</span></Link>
+          <button onClick={() => props.deleteCase(props.id)}><span>Delete</span></button>
+        </CaseButtons>
+      }
+
     </CaseContainer>
   )
 }
