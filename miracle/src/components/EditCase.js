@@ -61,7 +61,7 @@ const initialInfo = {
   socialCaseFamilyFName: '',
   socialCaseFamilyLName: '',
   socialCaseFamilyLastKnownLocation: '',
-  socialCaseFamilyNotes: ''
+  socialCaseNotes: ''
 
 };
 
@@ -77,7 +77,7 @@ const UpdateForm = props => {
 
   useEffect(() => {
     const caseToEdit = props.caseInfo.find(
-      data => `${data.id}` === props.match.params.id
+      data => `${data.socialCaseId}` === props.match.params.id
     );
     if (caseToEdit) setInfo(caseToEdit);
   }, [props.caseInfo, props.match.params.id])
@@ -124,7 +124,7 @@ const UpdateForm = props => {
             name="socialCaseFname"
             value={info.socialCaseFname}
             onChange={handleChange}
-            placeholder="First Name"
+            placeholder={info.socialCaseFname}
           />
           <input
             type="text"
@@ -191,8 +191,8 @@ const UpdateForm = props => {
           />
           <input
             type="text"
-            name="socialCaseFamilyNotes"
-            value={info.socialCaseFamilyNotes}
+            name="socialCaseNotes"
+            value={info.socialCaseNotes}
             onChange={handleChange}
             placeholder="Notes"
           />

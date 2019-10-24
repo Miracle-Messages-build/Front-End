@@ -68,7 +68,7 @@ const SignUp = (props) => {
 
         props.history.push('/login')
       })
-      .catch(err => {  props.history.push('/login') });
+      .catch(err => { props.history.push('/login') });
   }
   return (
     <>
@@ -76,7 +76,7 @@ const SignUp = (props) => {
         <h1>Miracle Messages</h1>
         <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
         <Link to="/">View Public Cases</Link>
-        <Link to="/login">Volunteer Login</Link>
+        <Link to="/login">Login</Link>
       </MiracleNav>
       <Form className="signup-form" onSubmit={handleLogin}>
         <h1>Sign up</h1>
@@ -101,7 +101,7 @@ const SignUp = (props) => {
           onChange={handleChange}
           placeholder="Primary Email"
         />
-      <button>Sign up</button>
+        <button>Sign up</button>
         <Link to="/login">Already a member?</Link>
       </Form>
     </>

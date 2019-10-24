@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -92,10 +92,10 @@ const AddCase = props => {
       <MiracleNav>
         <h1>Miracle Messages</h1>
         <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
-        <Link to="/">View Public Cases</Link>
-        <Link to="/newcase">Add Missing Person</Link>
-        <Link to="/signup">Sign up</Link>
-        <Link to="/login">Volunteer Login</Link>
+        <NavLink exact to="/" activeClassName="selectedItem">View Public Cases</NavLink>
+        <NavLink exact to="/newcase" activeClassName="selectedItem">Add Missing Person</NavLink>
+        <NavLink exact to="/signup" activeClassName="selectedItem">Sign up</NavLink>
+        <NavLink exact to="/login" activeClassName="selectedItem">Login</NavLink>
       </MiracleNav>
       <div className="vol-add-parent">
         <FormContainer>

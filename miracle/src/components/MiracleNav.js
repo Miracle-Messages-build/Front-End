@@ -24,7 +24,9 @@ export const MiracleNav = styled.nav`
   a {
     font-size: 1.6rem;
     text-decoration: none;
-    margin: 1%;    
+    /* margin: 1%;     */
+    padding: 1%;
+    border-radius: 15px;
     color: #23293B;
   }
 
