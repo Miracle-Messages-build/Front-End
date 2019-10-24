@@ -71,7 +71,7 @@ const Login = (props) => {
                 props.history.push('/dashboard')
 
             })
-            .catch(err => console.log(err.response));
+            .catch(err =>   {alert("Incorrect username or password")});
 
 
 
