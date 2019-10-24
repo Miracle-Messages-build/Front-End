@@ -37,16 +37,16 @@ const Form = styled.form`
       width: 100%;
       height: 3rem;
   }
-`
+`;
 
 const SignUp = (props) => {
+  const [signUp, setSignUp] = useState(credentials)
+
   const credentials = {
     username: '',
     primaryemail: '',
     password: ''
   }
-
-  const [signUp, setSignUp] = useState(credentials)
 
   const handleChange = event => {
     event.persist()
@@ -54,18 +54,14 @@ const SignUp = (props) => {
       ...signUp,
       [event.target.name]: event.target.value
     });
-
   }
 
   const handleLogin = event => {
     event.preventDefault();
-
     axios
       .post('https://lindseyacason-miraclemessages.herokuapp.com/createnewuser', signUp)
       .then(response => {
-        // localStorage.setItem('token', response.data.payload);
         alert("Must be logged in to do that!")
-
         props.history.push('/login')
       })
       .catch(err => { props.history.push('/login') });

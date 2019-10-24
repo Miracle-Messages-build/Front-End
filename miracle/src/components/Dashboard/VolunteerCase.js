@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
-
-import { fetchCase, editCase, addCase, deleteCase } from '../../actions/index.js'
-import { connect } from 'react-redux';;
+import { fetchCase, editCase, addCase, deleteCase } from '../../actions/index.js';
+import { connect } from 'react-redux';
 
 const CaseContainer = styled.div`
   margin: 2%;
@@ -17,7 +16,7 @@ const CaseContainer = styled.div`
   @media (max-width: 1200px){
     width: 40%;
   }
-  @media (max-width: 768px){
+  @media (max-width: 800px){
     width: 45%;
   }
   @media (max-width: 578px){
@@ -81,9 +80,6 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
-
-  // console.log(props,"vol case")
-
   return (
     <CaseContainer>
       <CaseHeader>
@@ -96,7 +92,6 @@ const VolunteerCase = props => {
           <li>Current City: {props.currentCity}</li>
           <li>Contact: {props.contact}</li>
         </ul>
-
         <ul>
           <p>Is Searching For</p>
           <li>{props.familyName}, {props.familyAge}</li>
@@ -105,13 +100,13 @@ const VolunteerCase = props => {
         </ul>
         <p>Notes: {props.extraDetails}</p>
       </CaseBody>
-      {props.viewingAllCases ? null :
-        <CaseButtons>
-          <Link to={`/dashboard/volunteer/edit/${props.id}`}><span>Edit Case</span></Link>
-          <button onClick={() => props.deleteCase(props.id)}><span>Delete</span></button>
-        </CaseButtons>
+      {
+        props.viewingAllCases ? null :
+          <CaseButtons>
+            <Link to={`/dashboard/volunteer/edit/${props.id}`}><span>Edit Case</span></Link>
+            <button onClick={() => props.deleteCase(props.id)}><span>Delete</span></button>
+          </CaseButtons>
       }
-
     </CaseContainer>
   )
 }

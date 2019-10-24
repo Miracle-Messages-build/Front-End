@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-
 import PublicCase from './PublicCase';
 
 import { fetchCase, editCase, addCase, deleteCase } from '../../actions/index.js'
 import { connect } from 'react-redux';;
-
 
 const ViewPublicCases = (props) => {
 
@@ -13,15 +10,12 @@ const ViewPublicCases = (props) => {
     props.fetchCase();
   }, [])
 
-
   const [publicCases, setPublicCases] = useState(null);
 
   useEffect(() => {
-
-
     setPublicCases(props.cases.filter(socialCase => socialCase.user === null));
-
   }, [props.cases]);
+
   if (props.loading) {
     return <h1>Loading...</h1>
   }
@@ -42,8 +36,6 @@ const ViewPublicCases = (props) => {
     </>
   );
 }
-
-
 
 const mapStateToProps = state => {
   return {

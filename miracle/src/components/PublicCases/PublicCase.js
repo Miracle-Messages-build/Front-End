@@ -6,10 +6,9 @@ const CaseContainer = styled.div`
   margin-top: 5%;
   width: 16%;
   min-width: 300px;
-
-  /* max-height: 160px; */
   background-color: whitesmoke;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
+  
   &:hover {
     transform: scale(1.05);
   }
