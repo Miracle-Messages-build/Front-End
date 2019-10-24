@@ -23,6 +23,11 @@ const Form = styled.form`
       margin-bottom: 2rem;
   }
 
+  a {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+
   input {
       margin: .5rem auto;
       width: 100%;
@@ -100,7 +105,7 @@ const Login = (props) => {
 
                 <button>Log in</button>
 
-
+                <Link to="/signup">Looking to sign up?</Link>
             </Form>
         </>
     );
