@@ -11,7 +11,7 @@ const StyledNav = styled.div`
   font-size: 2rem;
   width: 100%;
   background-color: lightsteelblue;
-
+    
   font-family: "Roboto Condensed", serif;
   span {
     font-weight: bold;
@@ -56,16 +56,18 @@ const StyledNavLink = styled(NavLink)`
 const StyledLoginNavLink = styled(NavLink)`
   background-color: #2DA561;
   color: #ffffff;
+  text-decoration:none;
   padding: 8px 16px;
-  border: 0.1em solid #22283a;
+//   border: 0.1em solid #22283a;
   border-radius: 4px;
   font-size: 1.5rem;
   margin-right: 20px;
-  background-color: black;
+  background-color: lightsteelblue;
+
   :hover {
-    background-color: #2da562;
-    border: 0.1em solid #2da562;
-    color: #fff !important;
+    // background-color: #2da562;
+    // border: 0.1em solid #2da562;
+    // color: #fff !important;
   }
 `;
 
@@ -92,9 +94,8 @@ export default class Nav extends React.Component {
           <StyledNavLink exact to="/public" activeClassName="activeNavButton">
             Home
         </StyledNavLink>
-          <StyledNavLink to="/viewallcases"><button>View All Cases</button></StyledNavLink>
-          <StyledNavLink to="/add/case"><button>Add Case</button></StyledNavLink>
-          <button onClick={handleLogout}>Logout</button>
+          <StyledNavLink to="/viewallcases">View all Cases</StyledNavLink>
+          <StyledNavLink to="/add/case">Add a new case</StyledNavLink>
 
           <StyledNavLink to="/signup" activeClassName="activeNavButton">
             Signup
@@ -108,8 +109,11 @@ export default class Nav extends React.Component {
             activeClassName="activeNavButton"
           >
             Login
-        </StyledLoginNavLink>
+        </StyledLoginNavLink > 
+        <button className="logout" onClick={handleLogout}>Logout</button>
+
         </StyledNav>
+       
       </div>
     );
   }
