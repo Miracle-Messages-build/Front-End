@@ -64,9 +64,11 @@ const SignUp = (props) => {
       .post('https://lindseyacason-miraclemessages.herokuapp.com/createnewuser', signUp)
       .then(response => {
         // localStorage.setItem('token', response.data.payload);
+        alert("Must be logged in to do that!")
+
         props.history.push('/login')
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {  props.history.push('/login') });
   }
   return (
     <>
@@ -99,7 +101,7 @@ const SignUp = (props) => {
           onChange={handleChange}
           placeholder="Primary Email"
         />
-        <button>Sign up</button>
+      <button>Sign up</button>
         <Link to="/login">Already a member?</Link>
       </Form>
     </>
