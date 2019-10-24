@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import VolunteerCase from './VolunteerCase';
 
-
-
 const CaseContainer = styled.div`
   width: 80%;
   display: flex;
@@ -33,9 +31,7 @@ const ViewCases = props => {
         })
         .catch(err => console.log(err));
     }
-  }, [props.viewAllCases])
-
-
+  }, [props.viewAllCases]);
 
   return (
     <>
@@ -56,11 +52,9 @@ const ViewCases = props => {
             lastKnownLoc={socialCase.socialCaseFamilyLastKnownLocation}
             extraDetails={socialCase.socialCaseNotes}
             viewingAllCases={props.viewAllCases}
-          // deleteCase={deleteCase}
           />
         )) : null}
       </CaseContainer>
-
     </>
   );
 }

@@ -1,5 +1,5 @@
-.logout
-{margin:1.5rem;
+.logout {
+  margin:1.5rem;
     background-color: #2DA561;
     color: #ffffff;
     padding: 8px 16px;
@@ -9,17 +9,18 @@
     margin-right: 20px;
     border:3px solid  lightsteelblue;
     font-family: "Roboto Condensed", serif;
-    background-color: lightsteelblue;
-
-     
+    background-color: lightsteelblue; 
 }
+
 .logout:hover {
    border: 2px solid whitesmoke;
-  }
+}
+
 .edit-parent{
     display: flex;
   justify-content: center;
 }
+
 .vol-add-parent{
     display: flex;
     justify-content: center;

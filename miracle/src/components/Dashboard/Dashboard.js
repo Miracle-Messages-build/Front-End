@@ -1,12 +1,12 @@
 import React from 'react';
-import { Route, Link, NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
-import ViewCases from './ViewCases';
-import VolunteerAddCase from './VolunteerAddCase';
 import PrivateRoute from '../PrivateRoute'
 
 import { MiracleNav } from '../MiracleNav';
+
+import ViewCases from './ViewCases';
+import VolunteerAddCase from './VolunteerAddCase';
 
 const CaseContainer = styled.div`
   width: 100%;
@@ -20,6 +20,7 @@ const Dashboard = props => {
     localStorage.removeItem('token');
     props.history.push('/')
   };
+
   return (
     <div>
       <MiracleNav>
