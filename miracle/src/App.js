@@ -30,7 +30,7 @@ function App(props) {
   const [caseInfo, setCaseInfo] = useState([])
   useEffect(() => {
     setCaseInfo(props.cases);
-  }, [props.caseinfo]);
+  }, [props.cases]);
 
   return (
     <div className="App">
