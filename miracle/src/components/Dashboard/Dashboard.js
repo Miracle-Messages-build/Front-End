@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ViewCases from './ViewCases';
@@ -25,10 +25,10 @@ const Dashboard = props => {
       <MiracleNav>
         <h1>Miracle Messages</h1>
         <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/dashboard/add/case">Add Case</Link>
-        <Link to="/dashboard/viewallcases">View All Cases</Link>
-        <Link to="/">View Public Cases</Link>
+        <NavLink exact to="/dashboard" activeClassName="selectedItem">Dashboard</NavLink>
+        <NavLink exact to="/dashboard/add/case" activeClassName="selectedItem">Add Case</NavLink>
+        <NavLink exact to="/dashboard/viewallcases" activeClassName="selectedItem">View All Volunteer Cases</NavLink>
+        <NavLink exact to="/" activeClassName="selectedItem">View Public Cases</NavLink>
         <button onClick={handleLogout}>Logout</button>
       </MiracleNav>
       <CaseContainer>

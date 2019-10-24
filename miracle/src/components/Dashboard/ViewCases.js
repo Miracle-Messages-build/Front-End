@@ -39,26 +39,27 @@ const ViewCases = props => {
 
   return (
     <>
-          <CaseContainer>
+      <CaseContainer>
 
-      {socialCases ? socialCases.map((socialCase, idx) => (
-        <VolunteerCase
-          key={idx}
-          id={socialCase.socialCaseId}
-          name={`${socialCase.socialCaseFname} ${socialCase.socialCaseLname}`}
-          age={socialCase.socialCaseAge}
-          homeTown={socialCase.socialCaseHomeTown}
-          currentCity={socialCase.socialCaseCurrentTown}
-          contact={socialCase.socialCaseContactInfo}
-          familyName={`${socialCase.socialCaseFamilyFName} ${socialCase.socialCaseFamilyLName}`}
-          familyAge={socialCase.socialCaseFamilyAge}
-          relationship={socialCase.socialCaseFamilyRelationship}
-          lastKnownLoc={socialCase.socialCaseFamilyLastKnownLocation}
-          extraDetails={socialCase.socialCaseNotes}
+        {socialCases ? socialCases.map((socialCase, idx) => (
+          <VolunteerCase
+            key={idx}
+            id={socialCase.socialCaseId}
+            name={`${socialCase.socialCaseFname} ${socialCase.socialCaseLname}`}
+            age={socialCase.socialCaseAge}
+            homeTown={socialCase.socialCaseHomeTown}
+            currentCity={socialCase.socialCaseCurrentTown}
+            contact={socialCase.socialCaseContactInfo}
+            familyName={`${socialCase.socialCaseFamilyFName} ${socialCase.socialCaseFamilyLName}`}
+            familyAge={socialCase.socialCaseFamilyAge}
+            relationship={socialCase.socialCaseFamilyRelationship}
+            lastKnownLoc={socialCase.socialCaseFamilyLastKnownLocation}
+            extraDetails={socialCase.socialCaseNotes}
+            viewingAllCases={props.viewAllCases}
           // deleteCase={deleteCase}
-        />
-      )) : null}
-            </CaseContainer>
+          />
+        )) : null}
+      </CaseContainer>
 
     </>
   );

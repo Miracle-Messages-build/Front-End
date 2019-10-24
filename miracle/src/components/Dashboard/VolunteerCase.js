@@ -9,7 +9,8 @@ import { connect } from 'react-redux';;
 const CaseContainer = styled.div`
   margin: 2%;
   margin-top: 5%;
-  width: 16%;
+  width: 20%;
+  min-width: 300px;
   background-color: whitesmoke;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
 
@@ -104,10 +105,13 @@ const VolunteerCase = props => {
         </ul>
         <p>Notes: {props.extraDetails}</p>
       </CaseBody>
-      <CaseButtons>
-        <Link to={`/dashboard/volunteer/edit/${props.id}`}><span>Edit Case</span></Link>
-        <button onClick={() => props.deleteCase(props.id)}><span>Delete</span></button>
-      </CaseButtons>
+      {props.viewingAllCases ? null :
+        <CaseButtons>
+          <Link to={`/dashboard/volunteer/edit/${props.id}`}><span>Edit Case</span></Link>
+          <button onClick={() => props.deleteCase(props.id)}><span>Delete</span></button>
+        </CaseButtons>
+      }
+
     </CaseContainer>
   )
 }
