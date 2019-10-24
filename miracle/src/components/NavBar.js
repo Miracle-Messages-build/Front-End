@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledNav = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   text-decoration: none;
   height: 80px;
   align-items: center;

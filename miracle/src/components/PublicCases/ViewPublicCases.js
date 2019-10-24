@@ -17,10 +17,7 @@ const ViewPublicCases = (props) => {
   const [publicCases, setPublicCases] = useState(null);
 
   useEffect(() => {
-    // axios.get('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases')
-    //   .then(response => {
-    //     console.log('Get Response', response)
-      
+   
         
         setPublicCases(props.cases.filter(socialCase => socialCase.user === null));
     

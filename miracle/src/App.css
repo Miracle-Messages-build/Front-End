@@ -13,3 +13,13 @@
 
      
 }
+
+.edit-parent{
+    display: flex;
+  justify-content: center;
+}
+.vol-add-parent{
+    display: flex;
+  justify-content: center;
+}
+

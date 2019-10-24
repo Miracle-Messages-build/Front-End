@@ -7,6 +7,7 @@ import { fetchCase, editCase, addCase } from '../../actions/index.js'
 import { connect } from 'react-redux';
 
 const FormContainer = styled.div`
+  
   margin-top: 2%; 
   width: 50%;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
@@ -105,8 +106,9 @@ const VolunteerAddCase = (props) => {
   // }
 
   return (
+    <div className= "vol-add-parent">
     <FormContainer>
-      <FormHeader></FormHeader>
+      <FormHeader>Add a case</FormHeader>
       <Form >
         <FormMain>
 
@@ -168,9 +170,10 @@ const VolunteerAddCase = (props) => {
           </FormSection>
         </FormMain>
         {/* <button type="submit">Add New Case</button> */}
-        <button onClick={e => { props.history.push('/public'); handleSubmit(e); }}>Add</button>
+        <button onClick={e => { props.history.push('/viewallcases'); handleSubmit(e); }}>Add</button>
       </Form>
     </FormContainer>
+    </div>
   )
 }
 
