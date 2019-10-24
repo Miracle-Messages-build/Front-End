@@ -3,7 +3,7 @@ import { Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ViewPublicCases from './ViewPublicCases';
-import AddCase from './AddPublicCase.js'
+import AddCase from './AddPublicCase.js';
 
 import { MiracleNav } from '../MiracleNav';
 

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import axios from 'axios'
-// import { axiosWithAuth } from '../../utils/axiosWithAuth.js'
 
 import { fetchCase, editCase, addCase } from '../../actions/index.js'
 import { connect } from 'react-redux';
@@ -114,9 +112,8 @@ const VolunteerAddCase = (props) => {
   return (
     <FormContainer>
       <FormHeader>Add a case</FormHeader>
-      <Form >
+      <Form>
         <FormMain>
-
           <FormSection>
             <label htmlFor="socialCaseFname">
               Homeless Person's Name
@@ -174,8 +171,7 @@ const VolunteerAddCase = (props) => {
             </label>
           </FormSection>
         </FormMain>
-        {/* <button type="submit">Add New Case</button> */}
-        <button onClick={e => { props.history.push('/dashboard/viewallcases'); handleSubmit(e); }}>Add</button>
+        <button onClick={e => { props.history.push('/dashboard'); handleSubmit(e); }}>Add</button>
       </Form>
     </FormContainer>
   )
