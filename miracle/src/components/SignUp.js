@@ -8,9 +8,7 @@ import styled from 'styled-components';
 const Form = styled.form`
   margin: 5% auto;
   width: 15%;
-  /* border: 2px solid grey; */
   border-radius: 5px;
-  /* font-size: 1.2rem; */
   background:#e5e5e5;
   box-shadow: 5px 1px 20px #111;
   display:flex;
@@ -21,6 +19,11 @@ const Form = styled.form`
   h1 {
       font-size: 2.4rem;
       margin-bottom: 2rem;
+  }
+
+  a {
+    font-size: 1.4rem;
+    margin-top: 2rem;
   }
 
   input {
@@ -37,13 +40,6 @@ const Form = styled.form`
 `
 
 const SignUp = (props) => {
-  // console.log (props,"in signup")
-  // {
-  //     "password": "string",
-  //     "primaryemail": "string",
-  //     "username": "string"
-  //   }
-
   const credentials = {
     username: '',
     primaryemail: '',
@@ -66,19 +62,12 @@ const SignUp = (props) => {
 
     axios
       .post('https://lindseyacason-miraclemessages.herokuapp.com/createnewuser', signUp)
-      // .then(response => {
-      //   console.log(response.data, "sign up")
-
       .then(response => {
         localStorage.setItem('token', response.data.payload);
         props.history.push('/login')
       })
       .catch(err => console.log(err.response));
-
-
-
   }
-
   return (
     <>
       <MiracleNav>
@@ -111,8 +100,7 @@ const SignUp = (props) => {
           placeholder="Primary Email"
         />
         <button>Sign up</button>
-
-
+        <Link to="/login">Already a member?</Link>
       </Form>
     </>
   );
