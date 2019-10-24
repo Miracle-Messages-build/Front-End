@@ -69,8 +69,12 @@ const AddCase = props => {
   const submitForm = e => {
     e.preventDefault();
     axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
+      // .then(response => {
+      //   // console.log('POST Response:', response)
+      // })
       .then(response => {
-        // console.log('POST Response:', response)
+        setInputs(response.data)
+        window.location.reload();
       })
       .catch(err => console.log('POST Error:', err));
   }

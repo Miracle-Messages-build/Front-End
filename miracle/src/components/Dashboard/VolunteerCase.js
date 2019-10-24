@@ -69,7 +69,9 @@ const CaseButtons = styled.div`
 `;
 
 const VolunteerCase = props => {
-  console.log(props, "inde")
+
+  // console.log(props,"vol case")
+
   return (
     <CaseContainer>
       <CaseHeader>
