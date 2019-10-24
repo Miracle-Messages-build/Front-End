@@ -21,10 +21,11 @@ const PublicCases = props => {
       <MiracleNav>
         <h1>Miracle Messages</h1>
         <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
+        <Link to="/dashboard">Dashboard</Link>
         <Link to="/">View Public Cases</Link>
         <Link to="/newcase">Add Missing Person</Link>
         <Link to="/signup">Sign up</Link>
-        <Link to="/login">Volunteer Login</Link>
+        <Link to="/login">Login</Link>
       </MiracleNav>
       <CaseContainer>
         {props.location.pathname === "/" ? <ViewPublicCases /> : null}

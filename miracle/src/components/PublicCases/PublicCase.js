@@ -10,7 +10,17 @@ const CaseContainer = styled.div`
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
   &:hover {
     transform: scale(1.05);
+  }
 
+  @media (max-width: 1200px){
+    width: 40%;
+  }
+  @media (max-width: 768px){
+    width: 45%;
+  }
+  @media (max-width: 578px){
+    width: 95%;
+  }
 `;
 
 const CaseHeader = styled.h1`
