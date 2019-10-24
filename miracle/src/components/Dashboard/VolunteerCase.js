@@ -9,9 +9,19 @@ import { connect } from 'react-redux';;
 const CaseContainer = styled.div`
   margin: 2%;
   margin-top: 5%;
-  width: 15%;
+  width: 16%;
   background-color: whitesmoke;
   box-shadow: 0 0 2px 1px rgb(100, 100, 100, 0.5);
+
+  @media (max-width: 1200px){
+    width: 40%;
+  }
+  @media (max-width: 768px){
+    width: 45%;
+  }
+  @media (max-width: 578px){
+    width: 95%;
+  }
 
   ul {
     p {
@@ -40,6 +50,7 @@ const CaseButtons = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 3%;
 
   a {
     text-decoration: none;
