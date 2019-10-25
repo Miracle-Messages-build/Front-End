@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { fetchCase, editCase, addCase } from '../../actions/index.js'
 import { connect } from 'react-redux';
 
+import ErrorModal from '../ErrorModal';
+
 const FormContainer = styled.div`
   margin-top: 2%; 
   width: 50%;
@@ -96,21 +98,57 @@ const VolunteerAddCase = (props) => {
     socialCaseNotes: ''
   });
 
+  const [error, setError] = useState({ isActive: false, msg: '' });
+
+  const notesMaxChars = 150;
+
   const handleChange = e => {
+    if (e.target.name === 'socialCaseNotes') {
+      if (e.target.value.length > notesMaxChars) {
+        return;
+      }
+    }
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setInputs({ ...inputs, [e.target.name]: value });
   }
 
   const handleSubmit = event => {
-    console.log(inputs, "new")
     event.preventDefault();
+    if (inputs.socialCaseFname.length < 2 || inputs.socialCaseFamilyFName.length < 2) {
+      setError({ isActive: true, msg: 'First name cannot be less than two characters.' });
+      return;
+    }
+
+    if (inputs.socialCaseLname.length < 2 || inputs.socialCaseFamilyLName.length < 2) {
+      setError({ isActive: true, msg: 'Last name cannot be less than two characters.' });
+      return;
+    }
+
+    if (inputs.socialCaseHometown.length < 4) {
+      setError({ isActive: true, msg: 'Home town cannot be less than four characters.' });
+      return;
+    }
+    if (inputs.socialCaseCurrentTown.length < 4) {
+      setError({ isActive: true, msg: 'Current town must not be less than four characters.' });
+      return;
+    }
+
+    if (inputs.socialCaseContactInfo.length < 4) {
+      setError({ isActive: true, msg: 'Contact info cannot be less than four characters.' });
+      return;
+    }
+
+    if (inputs.socialCaseFamilyLastKnownLocation.length < 4) {
+      setError({ isActive: true, msg: 'Last known location cannot be less than four characters.' });
+      return;
+    }
+    props.history.push('/dashboard'); 
     props.addCase(inputs);
   }
 
-
-
   return (
     <FormContainer>
+      {error.isActive ? <ErrorModal error={error.msg} setError={setError} /> : null}
       <FormHeader>Add a case</FormHeader>
       <Form>
         <FormMain>
@@ -166,12 +204,12 @@ const VolunteerAddCase = (props) => {
             <input type="text" name="socialCaseFamilyLastKnownLocation" id="socialCaseFamilyLastKnownLocation" value={inputs.socialCaseFamilyLastKnownLocation} onChange={handleChange} placeholder="City" required />
             </label>
             <label htmlFor="socialCaseNotes">
-              Extra Details
-          <textarea name="socialCaseNotes" id="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" required />
+              Extra Details (Characters remaining: {notesMaxChars - inputs.socialCaseNotes.length})
+          <textarea name="socialCaseNotes" id="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" />
             </label>
           </FormSection>
         </FormMain>
-        <button onClick={e => { props.history.push('/dashboard'); handleSubmit(e); }}>Add</button>
+        <button onClick={e => { handleSubmit(e); }}>Add</button>
       </Form>
     </FormContainer>
   )

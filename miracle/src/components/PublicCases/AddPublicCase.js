@@ -4,6 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import { MiracleNav } from '../MiracleNav';
+import ErrorModal from '../ErrorModal';
 
 const FormContainer = styled.div`
   margin-top: 5%;
@@ -69,22 +70,43 @@ const AddCase = props => {
     socialCaseNotes: '',
   });
 
+  const [error, setError] = useState({ isActive: false, msg: '' });
+
+  const notesMaxChars = 150;
+
   const handleChange = e => {
+    if (e.target.name === 'socialCaseNotes') {
+      if (e.target.value.length > notesMaxChars) {
+        return;
+      }
+    }
     setInputs({ ...inputs, [e.target.name]: e.target.value })
   }
 
   const submitForm = e => {
     e.preventDefault();
+
+    if (inputs.socialCaseFname.length < 2) {
+      setError({ isActive: true, msg: 'First name cannot be less than two characters.' });
+      return;
+    }
+
+    if (inputs.socialCaseLname.length < 2) {
+      setError({ isActive: true, msg: 'Last name cannot be less than two characters.' });
+      return;
+    }
+
     axios.post('https://lindseyacason-miraclemessages.herokuapp.com/socialCases/socialCases/add', inputs)
       .then(response => {
-        setInputs(response.data)
-        window.location.reload();
+        props.history.push('/');
+        // window.location.reload();
       })
-      .catch(err => console.log('POST Error:', err));
+      .catch(error => setError({ isActive: true, msg: `Error ${error.response.status}: ${error.response.data.error}` }));
   }
 
   return (
     <>
+      {error.isActive ? <ErrorModal error={error.msg} setError={setError} /> : null}
       <MiracleNav>
         <h1>Miracle Messages</h1>
         <a href="https://bw1-crutledge.netlify.com/index.html">Home</a>
@@ -96,7 +118,7 @@ const AddCase = props => {
       <div className="vol-add-parent">
         <FormContainer>
           <FormHeader>Add Lost Family Member</FormHeader>
-          <Form onSubmit={e => { props.history.push('/'); submitForm(e); }}>
+          <Form onSubmit={e => { submitForm(e); }}>
             <label htmlFor="socialCaseFname">
               First Name
           <input type="text" name="socialCaseFname" value={inputs.socialCaseFname} onChange={handleChange} placeholder="First Name" required />
@@ -118,8 +140,8 @@ const AddCase = props => {
           <input type="text" name="socialCaseContactInfo" value={inputs.socialCaseContactInfo} onChange={handleChange} placeholder="Phone # or Address" required />
             </label>
             <label htmlFor="socialCaseNotes">
-              Extra Details
-          <textarea name="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" required />
+              Extra Details (Characters remaining: {notesMaxChars - inputs.socialCaseNotes.length})
+          <textarea name="socialCaseNotes" value={inputs.socialCaseNotes} onChange={handleChange} placeholder="Other family members, friends, last known job, etc" />
             </label>
             <button type="submit">Create Post</button>
           </Form>
