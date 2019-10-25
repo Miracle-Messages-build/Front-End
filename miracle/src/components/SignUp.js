@@ -40,13 +40,13 @@ const Form = styled.form`
 `;
 
 const SignUp = (props) => {
-  const [signUp, setSignUp] = useState(credentials)
 
   const credentials = {
     username: '',
     primaryemail: '',
     password: ''
   }
+  const [signUp, setSignUp] = useState(credentials)
 
   const handleChange = event => {
     event.persist()
